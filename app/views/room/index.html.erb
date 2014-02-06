@@ -11,16 +11,18 @@
 		<div class="div-centered">
 			<div class = "text-centered">
 				<h2> My Bedroom </h2>
-				<a href = "/spaces/add"> 
-					<button type = "Button" class = "btn primary large"> Edit </button>
-				</a>
+					<button type = "Button" class = "btn primary large" onclick = "window.location.href = '/spaces/add'"> Edit </button>
 				<br>
 				<br>
 			</div>
 		</div>
 		<br>
 
-		<img src="/images/<%= @roomID %>.jpg"/>
+		<% if params[:id].nil? %>
+			<img src="/images/room03.jpg"/>
+		<% else %>
+			<img src="/images/<%= @roomID %>.jpg"/>
+		<% end %>
 
 		<br>
 
