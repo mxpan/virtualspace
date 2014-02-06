@@ -51,7 +51,10 @@ section {
 
 // NAVBAR START
 .navbar-header {
-  height:auto;
+  top:0px;
+  left:0px;
+  background-image:url('/images/header.png');
+  background-repeat:no-repeat;
 }
 
 .navbar-default {
