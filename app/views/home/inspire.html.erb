@@ -1,2 +1,14 @@
-<h1>Home#inspire</h1>
-<p>Find me in app/views/home/inspire.html.erb</p>
+<h2>What's New
+	<p class="lead">See what other users have been up to</p>
+</h2>
+<div class="row">
+<% @new_items.each do |i| %>
+	<div class="col-lg-2 col-sm-3 col-xs-4">
+		<a href="#">
+		     <img src="<%= i %>" class="thumbnail img-responsive">
+		</a>
+	</div>
+<% end %>
+
+<a href="/search"><button type="Button" class="btn primary large">Search For More</button></a>
+</div>
