@@ -1,2 +1,14 @@
-<h1>Home#inspire</h1>
-<p>Find me in app/views/home/inspire.html.erb</p>
+<div class="centered">
+	<div class="pageTitle">
+		<h1><%= @username %>'s Spaces</h1>
+	</div>
+	<button type="button" onclick="window.location.href='/addSpace'">Add</button>
+	<div class="carouselLabel">
+		My Rooms
+	</div>
+	<!-- carousel -->
+	<div class="carouselLabel">
+		My Items
+	</div>
+	<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr2, :carouselID => "carousel2"}%>
+</div>
