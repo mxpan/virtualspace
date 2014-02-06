@@ -8,22 +8,39 @@
 	</head>
 
 	<body>
-		<div id = "top">
-			<h3> My<br>&nbsp;&nbsp;Bedroom </h3>
-			<button class = "btn primary large"> Edit </button>
-			<img src=""/>
+		<div class="div-centered">
+			<div class = "text-centered">
+				<h2> My Bedroom </h2>
+				<a href = "/spaces/add"> 
+					<button type = "Button" class = "btn primary large"> Edit </button>
+				</a>
+				<br>
+				<br>
+			</div>
+		</div>
+		<br>
+
+		<img src="/images/<%= @roomID %>.jpg"/>
+
+		<br>
+
+		<div>
+			<b> Description: </b>
+			<br>&nbsp;&nbsp; The room to end all rooms.
+		</div>
+
+		<div class="divCentered">
+			<br>
+			<b> Items: </b>
+			<%= render :partial => "layouts/carousel", :locals => {:items => @items, :carouselID => "carousel2", :nextPage => "/item"}%>
+		</div>
+
 		</div>
 
 		<div>
-			Description:
-		</div>
-
-		<div>
-			Items:
-		</div>
-
-		<div>
-			Tags:
+			<br>
+			<b> Tags: </b> 
+			<br>&nbsp;&nbsp; bedroom, big, space
 		</div>
 
 	</body>

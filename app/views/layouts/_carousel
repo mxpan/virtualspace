@@ -15,7 +15,7 @@
 			<% for i in 0..items.count-1 %>
 				<% item = items[i] %>
 		        <div class="<% if i==0 %>active <% end %>item">
-		            <a href="<%= nextPage %>/<%= item[:id] %>" > <img class="img-responsive" src="<%= item[:imageURL] %>" ></a>
+		            <a href="<%= nextPage %>?id=<%= item[:id] %>" > <img class="img-responsive" src="<%= item[:imageURL] %>" ></a>
 		           	<div class="carousel-caption">
 		              <h3><%= item[:name] %></h3>
 		              <p><%= item[:description] %></p>
