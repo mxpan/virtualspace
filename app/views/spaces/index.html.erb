@@ -9,10 +9,10 @@
 <div class="carouselLabel">
 	<h4>My<br>&nbsp;&nbsp;Rooms</h4>
 </div>
-<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel1"}%>
+<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel1", :nextPage => "/room"}%>
 <div class="carouselLabel">
 	<h4>My<br>&nbsp;&nbsp;Items</h4>
 </div>
 <div class="divCentered">
-	<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr2, :carouselID => "carousel2"}%>
+	<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr2, :carouselID => "carousel2", :nextPage => "/item"}%>
 </div>
