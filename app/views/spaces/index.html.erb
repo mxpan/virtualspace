@@ -1,14 +1,18 @@
-<div class="centered">
-	<div class="pageTitle">
-		<h1><%= @username %>'s Spaces</h1>
+<div class="text-centered">
+	<div class="pageTitle text-centered">
+		<h2><%= @username %>'s Spaces</h2>
 	</div>
-	<button type="button" onclick="window.location.href='/addSpace'">Add</button>
-	<div class="carouselLabel">
-		My Rooms
-	</div>
-	<!-- carousel -->
-	<div class="carouselLabel">
-		My Items
-	</div>
+
+	<button type="button" class="btn primary large" onclick="window.location.href='/addSpace'">Add</button>
+</div>
+
+<div class="carouselLabel">
+	<h4>My<br>&nbsp;&nbsp;Rooms</h4>
+</div>
+<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel1"}%>
+<div class="carouselLabel">
+	<h4>My<br>&nbsp;&nbsp;Items</h4>
+</div>
+<div class="divCentered">
 	<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr2, :carouselID => "carousel2"}%>
 </div>
