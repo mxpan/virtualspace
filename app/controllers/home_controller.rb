@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  def inspire
+  def index
   	# search for latest items/rooms, return results
   	@new_items = Array.new();
   	@new_items.push("/images/room01.jpg");
@@ -8,5 +8,9 @@ class HomeController < ApplicationController
   	@new_items.push("/images/room04.jpg");
   	@new_items.push("/images/room05.jpg");
   	@new_items.push("/images/room06.jpg");
+  end
+
+  def login
+    
   end
 end
