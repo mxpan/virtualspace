@@ -27,3 +27,11 @@
 	background-image:url('/images/header.png');
 	background-repeat:no-repeat;
 }
+
+.clicktohome {
+	position:absolute;
+	top:0px;
+	width:50%;
+	height:50px;
+	z-index:3;
+}
