@@ -18,11 +18,7 @@ development:
   database: vs_development
   pool: 5
   username: vs_user
-<<<<<<< HEAD
   password:
-=======
-  password: 
->>>>>>> a5c858bc72edc51ef619ab97f2327169d3bb7d0d
   
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
