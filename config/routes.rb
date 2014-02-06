@@ -1,4 +1,8 @@
 VirtualSpace::Application.routes.draw do
+  get "help/index"
+
+  get "search/index"
+
   get "home/inspire"
 
   # The priority is based upon order of creation:

@@ -1,1 +1,5 @@
 <%# add navigation links to this file %>
+<li><%= link_to 'Home', root_path %></li>
+<li><%= link_to 'Search', {:controller=>"search", :action=>"index"} %></li>
+<li><%= link_to 'Your Spaces', {:controller=>"spaces", :action=>"index"} %></li>
+<li><%= link_to 'Help', {:controller=>"help", :action=>"index"} %></li>
