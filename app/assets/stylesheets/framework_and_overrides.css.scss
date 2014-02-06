@@ -1,6 +1,10 @@
 // import the CSS framework
 @import "bootstrap";
 
+a:link {
+  color: #8f2831;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
