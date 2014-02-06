@@ -1,4 +1,6 @@
 VirtualSpace::Application.routes.draw do
+  get "item/index"
+
   get "help/index"
 
   get "search/index"
