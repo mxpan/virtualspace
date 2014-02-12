@@ -1,7 +1,49 @@
 <center><h2>Welcome to VirtualSpace</h2></center>
-<br/><br/>
+<br/>
 <center>
-	<p><a href="/home"><button type="Button" class="btn primary large">Signup</button></a></p>
-
-	<p><a href="/home"><button type="Button" class="btn primary large">Login</button></a></p>
+	<form>
+		<p>Email</p>
+		<input type="text" name="username"><br><br>
+		<p>Password</p>
+		<input type="text" name="password"><br>
+		<div id="signupForm">
+			<br><p>Username<br>(to display on design profile)</p>
+			<input type="text" name="username"><br>
+		</div>
+	</form>
+	<br/>
+	<div id="loginScreenButtons">
+		<p><button id="loginBtn" type="Button" class="btn btn-lg">Login</button></p>
+		<br/>
+		<p>First time using VirtualSpace?</p>
+		<p><button id="signupBtn"type="Button" class="btn btn-sm">Signup</button></p>
+	</div>
+	<div id="signupScreenButtons">
+		<p><button id="createAccountBtn"type="Button" class="btn btn-lg">Create Account</button></p><br/>
+		<p>Already have an account?</p>
+		<p><button id="backToLoginBtn" type="Button" class="btn btn-sm">Login</button></p>
+	</div>
 </center>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#signupForm").hide();
+		$("#signupScreenButtons").hide();
+	});
+
+	$("#signupBtn").click(function(){
+		$("#loginScreenButtons").hide("medium");
+		$("#signupForm").show("medium");
+		$("#signupScreenButtons").show("medium");
+	});
+
+	$("#backToLoginBtn").click(function(){
+		$("#signupForm").hide("medium");
+		$("#signupScreenButtons").hide("medium");
+
+		$("#loginScreenButtons").show("medium");
+	});
+
+
+
+</script>
