@@ -18,6 +18,8 @@ class RoomsController < ApplicationController
 	    			file.write(uploaded_io.read)
 	  		end
 
+	  		user = User.find_by_id(session[:user_id])
+	  		@room.user = user
 	  		@room.name = params[:room][:name]
 	  		@room.description = params[:room][:description]
 	  		@room.imageURL = uploaded_io.original_filename

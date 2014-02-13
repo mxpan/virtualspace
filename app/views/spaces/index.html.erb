@@ -8,7 +8,11 @@
 <div class="carouselLabel">
 	<h4>My<br>&nbsp;&nbsp;Rooms</h4>
 </div>
-<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel1", :nextPage => "/room"}%>
+<% if !@roomsArr.empty? %>
+	<%= render :partial => "layouts/carousel", :locals => {:items => @roomsArr, :carouselID => "carousel1", :nextPage => "/rooms/index"}%>
+<% else %>
+	<p>No rooms</p>
+<% end %>
 
 <div class = "text-centered">
 	<br>
@@ -20,7 +24,11 @@
 	<h4>My<br>&nbsp;&nbsp;Items</h4>
 </div>
 <div class="divCentered">
-	<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr2, :carouselID => "carousel2", :nextPage => "/item"}%>
+	<% if !@itemsArr.empty? %>
+		<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel2", :nextPage => "/items/index"}%>
+	<% else %>
+		<p>No items</p>
+	<% end %>
 	<div class = "text-centered">
 		<br>
 	<%= link_to "[View All Items]", "/spaces/items?username=" + @username %>

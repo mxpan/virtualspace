@@ -1,7 +1,6 @@
 <!-- carousel is passed an array of items which contains hashes with the following data as well as a carouselID and a url for the next page
 	:items => [{:name => ...,  :id => ..., :description => ..., :imageURL => ...}], :carouselID => ..., :nextPage => ...
 -->
-
 <div class="carouselDiv">
 	<div id="<%= carouselID %>" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
@@ -12,8 +11,9 @@
 		</ol>
 
 		<div class="carousel-inner">
-			<% items.each do |item| %>
-		        <div class="item">
+			<% for i in 0..items.count-1 %>
+				<% item = items[i] %>
+		        <div class="<% if i==0 %>active <% end %>item">
 		            <a href="<%= nextPage %>/<%= item.id %>" > <img class="img-responsive" src="<%= item.imageURL %>" ></a>
 		           	<div class="carousel-caption">
 		              <h3><%= item.name %></h3>

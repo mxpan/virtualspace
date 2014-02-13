@@ -19,7 +19,7 @@
 	<br>
 	<b> Items: </b>
 	<% if @items %>
-		<%= render :partial => "layouts/carousel", :locals => {:items => @room.items, :carouselID => "carousel2", :nextPage => "/item/index/"} %>
+		<%= render :partial => "layouts/carousel", :locals => {:items => @room.items, :carouselID => "carousel2", :nextPage => "/item/index"} %>
 	<% else %>
 		No items
 	<% end %>

@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(:version => 20140213022144) do
 
   create_table "items", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
     t.string   "name"
     t.string   "description"
     t.string   "imageURL"
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20140213022144) do
   end
 
   create_table "rooms", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "description"
     t.string   "imageURL"
