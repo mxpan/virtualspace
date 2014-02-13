@@ -6,22 +6,22 @@ class LoadData < ActiveRecord::Migration
     user.save
 
   	#Create rooms
-  	room = Room.new(:user_id => user.id, :name => "Living Room", :description => "modern multi-colored living room", :imageURL => "/images/room01.jpg", :borrowedTimes => 5)
+  	room = Room.new(:user_id => user.id, :name => "Living Room", :description => "modern multi-colored living room", :imageURL => "room01.jpg", :borrowedTimes => 5)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Living Room 2", :description => "nothing is better than gazing at the sea in the morning", :imageURL => "/images/room02.jpg", :borrowedTimes => 4)
+  	room = Room.new(:user_id => user.id, :name => "Living Room 2", :description => "nothing is better than gazing at the sea in the morning", :imageURL => "room02.jpg", :borrowedTimes => 4)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Bedroom", :description => "simple white yet colorful bed", :imageURL => "/images/room03.jpg", :borrowedTimes => 3)
+  	room = Room.new(:user_id => user.id, :name => "Bedroom", :description => "simple white yet colorful bed", :imageURL => "room03.jpg", :borrowedTimes => 3)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "check out my expensive dining room set", :imageURL => "/images/room04.jpg", :borrowedTimes => 2)
+  	room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "check out my expensive dining room set", :imageURL => "room04.jpg", :borrowedTimes => 2)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Modern Bedroom", :description => "just as the name suggests", :imageURL => "/images/room05.jpg", :borrowedTimes => 4)
+  	room = Room.new(:user_id => user.id, :name => "Modern Bedroom", :description => "just as the name suggests", :imageURL => "room05.jpg", :borrowedTimes => 4)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Empty Living Room", :description => "nothing but a red couch", :imageURL => "/images/room06.jpg", :borrowedTimes => 1)
+  	room = Room.new(:user_id => user.id, :name => "Empty Living Room", :description => "nothing but a red couch", :imageURL => "room06.jpg", :borrowedTimes => 1)
   	room.save
   end
 
