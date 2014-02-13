@@ -1,5 +1,9 @@
 class SearchController < ApplicationController
   	def index
+  		if session[:user_id].nil?
+       		flash[:error] = "Please log in or create an account"
+      		redirect_to(:controller => :home, :action => :login)
+    	end
   	end
 
 
@@ -33,49 +37,5 @@ class SearchController < ApplicationController
 		render :partial => "find_objects"
 
 
-  	end
-
-  	def find_rooms
-	  	searchString = params[:search]
-	  	@foundObjects = []
-
-		if searchString != ""
-			#find photos with tags containing substring
-			tags = Tag.find(:all)
-			tags.each do |tag|
-				if tag.name.downcase.include?(searchString)
-					rooms = tag.rooms
-					rooms.each do |room|
-						if (!@foundObjects.include?(room))
-							@foundObjects << room
-						end
-					end
-				end
-			end
-		end
-
-		render :partial => "find_objects", :locals => {:nextPage => "/rooms/index", :objectType => "Rooms"}
-  	end
-
-  	def find_items
-	  	searchString = params[:search]
-	  	@foundObjects = []
-
-		if searchString != ""
-			#find photos with tags containing substring
-			tags = Tag.find(:all)
-			tags.each do |tag|
-				if tag.name.downcase.include?(searchString)
-					items = tag.items
-					items.each do |items|
-						if (!@foundObjects.include?(items))
-							@foundObjects << items
-						end
-					end
-				end
-			end
-		end
-
-		render :partial => "find_objects", :locals => {:nextPage => "/items/index", :objectType => "Items"}
   	end
 end

@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     if session[:user_id].nil?
        flash[:error] = "Please log in or create an account"
       redirect_to(:action => :login)
+    else
+      @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
     end
-
-    @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
   end
 
   def login
