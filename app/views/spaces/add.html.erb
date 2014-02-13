@@ -26,8 +26,8 @@
 	<br/>
 	<%= text_field_tag :description, nil, :placeholder => "Description", :class => "form-control" %>
 	<br/>
-	<%= collection_select(:user, :rooms, Room.all, :id, :name, prompt: true) %>
-	<br/>
+	Select a room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, prompt: true) %>
+	<br/><br/>
 	<%= text_field_tag :tag1, nil, :placeholder => "Tag 1", :class => "form-control" %>
 	<br/>
 	<%= text_field_tag :tag2, nil, :placeholder => "Tag 2 (optional)", :class => "form-control" %>

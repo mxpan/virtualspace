@@ -91,8 +91,8 @@ class ItemsController < ApplicationController
 		  			@item.tags << tag3
 		  		end
 
-		  		user = User.find_by_id(session[:user_id])
-		  		@item.user = user
+		  		@item.user_id = session[:user_id]
+		  		@item.room_id = params[:item][:room_id]
 		  		@item.name = params[:name]
 		  		@item.description = params[:description]
 		  		@item.imageURL = uploaded_io.original_filename

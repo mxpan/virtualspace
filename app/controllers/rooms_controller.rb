@@ -82,8 +82,7 @@ class RoomsController < ApplicationController
 		  			@room.tags << tag3
 		  		end
 
-		  		user = User.find_by_id(session[:user_id])
-		  		@room.user = user
+		  		@room.user_id = session[:user_id]
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]
 		  		@room.imageURL = uploaded_io.original_filename
