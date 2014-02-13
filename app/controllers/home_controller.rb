@@ -43,6 +43,7 @@ class HomeController < ApplicationController
     if !@user.valid?
       render(:action => :login)
     else
+      session[:user_id] = user.id
       @user.save
       redirect_to(:action => :index)
    end
