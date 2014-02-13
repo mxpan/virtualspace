@@ -1,27 +1,18 @@
 class HomeController < ApplicationController
   def index
   	# search for latest items/rooms, return results
-    id = params[:id];
-
-    # user is not logged in
-    if id.nil?
+    if session[:user_id].nil?
+       flash[:error] = "Please log in or create an account"
       redirect_to(:action => :login)
     end
 
     @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
-
-
-  	# @new_items = Array.new();
-  	# @new_items.push("/images/room01.jpg")
-  	# @new_items.push("/images/room02.jpg")
-  	# @new_items.push("/images/room03.jpg")
-  	# @new_items.push("/images/room04.jpg")
-  	# @new_items.push("/images/room05.jpg")
-  	# @new_items.push("/images/room06.jpg")
   end
 
   def login
-    
+    if !session[:user_id].nil?
+      redirect_to(:action => :index)
+    end
   end
 
   def post_login
@@ -31,11 +22,15 @@ class HomeController < ApplicationController
     user = User.find_by_email(email)
     if !user.nil?
       if user.password_valid?(password)
-        redirect_to(:action => :index, :id => user.id)
+        session[:user_id] = user.id
+        redirect_to(:action => :index)
       else
-        # display error
-        # render(:action => :login, :id => user.id)
+        flash[:error] = "Invalid Username or Password"
+        redirect_to(:action => :login)
       end
+    else
+      flash[:error] = "Invalid Username or Password"
+      redirect_to(:action => :login)
     end
   end
 
@@ -45,8 +40,14 @@ class HomeController < ApplicationController
     user.password = params[:password]
     user.username = params[:username]
 
-    user.save
+    # user.save
     redirect_to(:action => :index, :id => user.id)
+  end
+
+
+  def logout
+    reset_session
+    redirect_to :action => :login
   end
 
 end

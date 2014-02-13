@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :email, :password_digest, :username, :salt
+  attr_accessible :email, :password_digest, :username
   has_many :rooms
   has_many :items
 
-
+  validates :email, :password_digest, :username, :presence => true
 
 
   def password=(fullPassword)

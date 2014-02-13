@@ -1,5 +1,10 @@
 class LoadData < ActiveRecord::Migration
   def up
+    #Create user
+    user = User.new(:email => "a", :username => "a")
+    user.password = "a"
+    user.save
+
   	#Create rooms
   	room = Room.new(:name => "Living Room", :description => "modern multi-colored living room", :imageURL => "/images/room01.jpg", :borrowedTimes => 5)
   	room.save
