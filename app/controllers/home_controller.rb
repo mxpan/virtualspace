@@ -8,13 +8,16 @@ class HomeController < ApplicationController
       redirect_to(:action => :login)
     end
 
-  	@new_items = Array.new();
-  	@new_items.push("/images/room01.jpg")
-  	@new_items.push("/images/room02.jpg")
-  	@new_items.push("/images/room03.jpg")
-  	@new_items.push("/images/room04.jpg")
-  	@new_items.push("/images/room05.jpg")
-  	@new_items.push("/images/room06.jpg")
+    @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
+
+
+  	# @new_items = Array.new();
+  	# @new_items.push("/images/room01.jpg")
+  	# @new_items.push("/images/room02.jpg")
+  	# @new_items.push("/images/room03.jpg")
+  	# @new_items.push("/images/room04.jpg")
+  	# @new_items.push("/images/room05.jpg")
+  	# @new_items.push("/images/room06.jpg")
   end
 
   def login
