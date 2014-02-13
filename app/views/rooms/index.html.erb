@@ -1,0 +1,33 @@
+<div class="div-centered">
+	<div class="text-centered">
+		<h2><%= @room.name %></h2>
+			<button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/spaces/add'">Edit</button>
+		<br>
+		<br>
+	</div>
+</div>
+
+<img src="/images/<%= @room.imageURL %>"/>
+
+<div>
+	<b>Description:</b>
+	<br/>
+	<%= @room.description %>
+</div>
+
+<div class="divCentered">
+	<br>
+	<b> Items: </b>
+	<% if @items %>
+		<%= render :partial => "layouts/carousel", :locals => {:items => @room.items, :carouselID => "carousel2", :nextPage => "/item/index/"} %>
+	<% else %>
+		No items
+	<% end %>
+</div>
+
+<div>
+	<br>
+	<b> Tags: </b> 
+	<br>&nbsp;&nbsp; bedroom, big, space
+</div>
+

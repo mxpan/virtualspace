@@ -1,7 +1,29 @@
-class RoomController < ApplicationController
+class RoomsController < ApplicationController
 	def index
-		@roomID = params[:id]
-		@items = [{:name => "French Table", :id => "item01", :description => "what a wonderfully UGLY table", :imageURL => "/images/item01.jpg"}, {:name => "Bed", :id => "item02", :description => "nothin' like a classic", :imageURL => "/images/item02.jpg"}, {:name => "New Crib", :id => "item03", :description => "new crib for my new crib", :imageURL => "/images/item03.jpg"}]
+		@room = Room.find_by_id(params[:id])
+		@items = @room.items
 	end
 
+	def create
+		@room = Room.new
+		if !params[:room][:imageURL]
+			flash[:room_error] = "No file chosen"
+			redirect_to :controller => "spaces", :action => "add"
+		elsif params[:room][:name] == ""
+			flash[:room_error] = "You must enter a name"
+			redirect_to :controller => "spaces", :action => "add"
+		else
+			uploaded_io = params[:room][:imageURL]
+			File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
+	    			file.write(uploaded_io.read)
+	  		end
+
+	  		@room.name = params[:room][:name]
+	  		@room.description = params[:room][:description]
+	  		@room.imageURL = uploaded_io.original_filename
+	  		@room.borrowedTimes = 0
+	  		@room.save
+	  		redirect_to :action => "index", :id => @room.id
+  		end
+	end
 end
