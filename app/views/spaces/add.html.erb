@@ -5,18 +5,36 @@
 <button id="itemBtn" type="Button" class="btn btn-lg">Add Item</button>
 <br/><br/>
 
-<%= form_for @room, :html => { id: "addRoomForm" }, :url => {:controller => :rooms, :action => :create} do |form| %>
-	<p>Room name:</p> <%= form.text_field :name, class: "form-control" %><br/>
-	<p>Description:</p> <%= form.text_field :description, class: "form-control" %><br/>
-  	<p>Image:</p> <%= form.file_field :imageURL, class: "form-control" %><br/>
-  	<%= form.submit "Add Room", :html => { class: "btn btn-lg" } %>
+<%= form_tag({:action => 'create', :controller => 'rooms'}, {:id => 'addRoomForm'}) do %>
+	<%= text_field_tag :name, nil, :placeholder => "Room Name", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :description, nil, :placeholder => "Description", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag1, nil, :placeholder => "Tag 1", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag2, nil, :placeholder => "Tag 2 (optional)", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag3, nil, :placeholder => "Tag 3 (optional)", :class => "form-control" %>
+	<br/>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
+  	<br/>
+  	<%= submit_tag "Add Room", :html => { :class => "btn btn-lg" } %>
 <% end %>
 
-<%= form_for @item, :html => { id: "addItemForm" }, :url => {:controller => :items, :action => :create} do |form| %>
-	<p>Item name:</p> <%= form.text_field :name, class: "form-control" %><br/>
-	<p>Description:</p> <%= form.text_field :description, class: "form-control" %><br/>
-  	<p>Image:</p> <%= form.file_field :imageURL, class: "form-control" %><br/>
-  	<%= form.submit "Add Item", :html => { class: "btn btn-lg" } %>
+<%= form_tag({:action => 'create', :controller => 'items'}, {:id => 'addItemForm'}) do %>
+	<%= text_field_tag :name, nil, :placeholder => "Item Name", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :description, nil, :placeholder => "Description", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag1, nil, :placeholder => "Tag 1", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag2, nil, :placeholder => "Tag 2 (optional)", :class => "form-control" %>
+	<br/>
+	<%= text_field_tag :tag3, nil, :placeholder => "Tag 3 (optional)", :class => "form-control" %>
+	<br/>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
+  	<br/>
+  	<%= submit_tag "Add Item", :html => { :class => "btn btn-lg" } %>
 <% end %>
 </center>
 
