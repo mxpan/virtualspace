@@ -3,23 +3,23 @@
 <center>
 	<form>
 		<p>Email</p>
-		<input type="text" name="username"><br><br>
+		<input id="email" type="text"><br><br>
 		<p>Password</p>
-		<input type="text" name="password"><br>
+		<input id="password" type="text"><br>
 		<div id="signupForm">
 			<br><p>Username<br>(to display on design profile)</p>
-			<input type="text" name="username"><br>
+			<input type="text" id="username"><br>
 		</div>
 	</form>
 	<br/>
 	<div id="loginScreenButtons">
-		<p><button id="loginBtn" type="Button" class="btn btn-lg">Login</button></p>
+		<p><button id="loginBtn" type="Button" class="btn btn-lg" onClick="loginFunction()">Login</button></p>
 		<br/>
 		<p>First time using VirtualSpace?</p>
-		<p><button id="signupBtn"type="Button" class="btn btn-sm">Signup</button></p>
+		<p><button id="signupBtn"type="Button" class="btn btn-sm">Sign Up</button></p>
 	</div>
 	<div id="signupScreenButtons">
-		<p><button id="createAccountBtn"type="Button" class="btn btn-lg">Create Account</button></p><br/>
+		<p><button id="createAccountBtn"type="Button" class="btn btn-lg" onClick="createAccount()">Create Account</button></p><br/>
 		<p>Already have an account?</p>
 		<p><button id="backToLoginBtn" type="Button" class="btn btn-sm">Login</button></p>
 	</div>
@@ -29,6 +29,8 @@
 	$(document).ready(function(){
 		$("#signupForm").hide();
 		$("#signupScreenButtons").hide();
+
+		// $("#loginBtn").onClick(window.location.href = "/post_login?username="+$("#email").text);
 	});
 
 	$("#signupBtn").click(function(){
@@ -44,6 +46,12 @@
 		$("#loginScreenButtons").show("medium");
 	});
 
+	function loginFunction(){
+		window.location.href = "/home/post_login?email="+$("#email").val()+"&password="+$("#password").val();
+	}
 
+	function createAccount(){
+		window.location.href = "/home/post_create_account?email="+$("#email").val()+"&password="+$("#password").val()+"&username="+$("#username").val();
+	}
 
 </script>
