@@ -1,2 +1,56 @@
-<h2>Add or Edit Space/Item</h2>
-<p>Coming soon!</p>
+<h2>Add a Room/Item</h2>
+
+<center>
+<button id="roomBtn" type="Button" class="btn btn-lg">Add Room</button>
+<button id="itemBtn" type="Button" class="btn btn-lg">Add Item</button>
+<br/><br/>
+
+<%= form_for @room, :html => { id: "addRoomForm" }, :url => {:controller => :rooms, :action => :create} do |form| %>
+	<p>Room name:</p> <%= form.text_field :name, class: "form-control" %><br/>
+	<p>Description:</p> <%= form.text_field :description, class: "form-control" %><br/>
+  	<p>Image:</p> <%= form.file_field :imageURL, class: "form-control" %><br/>
+  	<%= form.submit "Add Room", :html => { class: "btn btn-lg" } %>
+<% end %>
+
+<%= form_for @item, :html => { id: "addItemForm" }, :url => {:controller => :items, :action => :create} do |form| %>
+	<p>Item name:</p> <%= form.text_field :name, class: "form-control" %><br/>
+	<p>Description:</p> <%= form.text_field :description, class: "form-control" %><br/>
+  	<p>Image:</p> <%= form.file_field :imageURL, class: "form-control" %><br/>
+  	<%= form.submit "Add Item", :html => { class: "btn btn-lg" } %>
+<% end %>
+</center>
+
+<% if flash[:room_error] %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#addRoomForm").show();
+			$("#addItemForm").hide();
+		});
+	</script>
+<% elsif flash[:item_error] %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#addRoomForm").hide();
+			$("#addItemForm").show();
+		});
+	</script>
+<% else %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#addRoomForm").hide();
+			$("#addItemForm").hide();
+		});
+	</script>
+<% end %>
+
+<script type="text/javascript">
+	$("#roomBtn").click(function(){
+		$("#addItemForm").hide();
+		$("#addRoomForm").show("medium");
+	});
+
+	$("#itemBtn").click(function(){
+		$("#addRoomForm").hide();
+		$("#addItemForm").show("medium");
+	});
+</script>

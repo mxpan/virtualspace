@@ -1,0 +1,22 @@
+<div class="div-centered">
+	<div class="text-centered">
+		<h2><%= @item.name %></h2>
+			<button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/spaces/add'">Edit</button>
+		<br>
+		<br>
+	</div>
+</div>
+
+<img src="/images/<%= @item.imageURL %>"/>
+
+<div>
+	<b>Description:</b>
+	<br/>
+	<%= @item.description %>
+</div>
+
+<div>
+	<br>
+	<b> Tags: </b> 
+	<br>&nbsp;&nbsp; bedroom, big, space
+</div>

@@ -6,6 +6,7 @@ class SpacesController < ApplicationController
 	end
 
 	def add
-		
+		@room = Room.new
+		@item = Item.new
 	end
 end
