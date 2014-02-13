@@ -1,0 +1,20 @@
+<h2>Edit Item "<%= @room.name %>"</h2>
+
+<img src="/images/<%= @room.imageURL %>"/>
+
+<div>
+	<b>Description:</b>
+	<br/>
+	<%= @room.description %>
+</div>
+
+<div>
+	<br>
+	<b> Tags: </b> 
+	<br/>
+	<% @tags.each do |t| %>
+		<%= t.name %> 
+	<% end %>
+</div>
+
+<button type = "Button" class = "btn btn-lg" onclick = "window.location.href='/items/delete'">Delete Room</button>

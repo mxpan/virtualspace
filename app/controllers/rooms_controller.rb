@@ -2,6 +2,21 @@ class RoomsController < ApplicationController
 	def index
 		@room = Room.find_by_id(params[:id])
 		@items = @room.items
+		@tags = @room.tags
+	end
+
+	def all
+		@user = User.find_by_id(session[:user_id])
+		@rooms = Room.find_all_by_user_id(session[:user_id])
+	end
+
+	def delete
+		@room = Room.find_by_id(params[:id])
+		if !@room.nil?
+			@room.destroy
+			flash[:notice] = "Room deleted"
+			redirect_to :controller => "spaces"
+		end
 	end
 
 	def create

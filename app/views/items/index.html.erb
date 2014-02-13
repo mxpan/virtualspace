@@ -1,11 +1,5 @@
-<div class="div-centered">
-	<div class="text-centered">
-		<h2><%= @item.name %></h2>
-			<button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/spaces/add'">Edit</button>
-		<br>
-		<br>
-	</div>
-</div>
+<h2><%= @item.name %></h2>
+<!-- <button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit</button> -->
 
 <img src="/images/<%= @item.imageURL %>"/>
 
@@ -18,5 +12,11 @@
 <div>
 	<br>
 	<b> Tags: </b> 
-	<br>&nbsp;&nbsp; bedroom, big, space
+	<br/>
+	<% @tags.each do |t| %>
+		<%= t.name %> 
+	<% end %>
 </div>
+
+<br/><br/>
+<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/items/delete/<%= @item.id %>'">Delete Item</button></center>

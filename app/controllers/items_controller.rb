@@ -1,6 +1,26 @@
 class ItemsController < ApplicationController
 	def index
 		@item = Item.find_by_id(params[:id])
+		@tags = @item.tags
+	end
+
+	def all
+		@user = User.find_by_id(session[:user_id])
+		@items = Item.find_all_by_user_id(session[:user_id])
+	end
+
+	def edit 
+		@item = Item.find_by_id(params[:id])
+		@tags = @item.tags 
+	end
+
+	def delete
+		@item = Item.find_by_id(params[:id])
+		if !@item.nil?
+			@item.destroy
+			flash[:notice] = "Item deleted"
+			redirect_to :controller => "spaces"
+		end
 	end
 
 	def create

@@ -1,0 +1,11 @@
+<h2><%= @user.username %>'s Items</h2>
+
+<div class="row">
+<% @items.each do |i| %>
+	<div class="col-lg-2 col-sm-3 col-xs-4">
+		<a href="/items/index/<%= i.id %>">
+		     <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+		</a>
+	</div>
+<% end %>
+</div>

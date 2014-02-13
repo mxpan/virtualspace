@@ -5,7 +5,7 @@
 <button id="itemBtn" type="Button" class="btn btn-lg">Add Item</button>
 <br/><br/>
 
-<%= form_tag({:action => 'create', :controller => 'rooms'}, {:id => 'addRoomForm'}) do %>
+<%= form_tag('/rooms/create', multipart: true, id: 'addRoomForm') do %>
 	<%= text_field_tag :name, nil, :placeholder => "Room Name", :class => "form-control" %>
 	<br/>
 	<%= text_field_tag :description, nil, :placeholder => "Description", :class => "form-control" %>
@@ -21,7 +21,7 @@
   	<%= submit_tag "Add Room", :html => { :class => "btn btn-lg" } %>
 <% end %>
 
-<%= form_tag({:action => 'create', :controller => 'items'}, {:id => 'addItemForm'}) do %>
+<%= form_tag('/items/create', multipart: true, id: 'addItemForm') do %>
 	<%= text_field_tag :name, nil, :placeholder => "Item Name", :class => "form-control" %>
 	<br/>
 	<%= text_field_tag :description, nil, :placeholder => "Description", :class => "form-control" %>

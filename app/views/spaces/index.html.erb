@@ -2,7 +2,7 @@
 	<div class="pageTitle text-centered">
 		<h2><%= @username %>'s Spaces</h2>
 	</div>
-	<button type="button" class="btn btn-lg" onclick="window.location.href='/spaces/add'">Add</button>
+	<button type="button" class="btn btn-lg" onclick="window.location.href='/spaces/add'">Add Room/Item</button>
 </div>
 
 <div class="carouselLabel">
@@ -10,15 +10,11 @@
 </div>
 <% if !@roomsArr.empty? %>
 	<%= render :partial => "layouts/carousel", :locals => {:items => @roomsArr, :carouselID => "carousel1", :nextPage => "/rooms/index"}%>
+	<br/>
+	<center><%= link_to "[View All Rooms]", "/rooms/all" %></center>
 <% else %>
 	<p>No rooms</p>
 <% end %>
-
-<div class = "text-centered">
-	<br>
-	<%= link_to "[View All Rooms]", "/spaces/rooms?username=" + @username %>
-</div>
-
 
 <div class="carouselLabel">
 	<h4>My<br>&nbsp;&nbsp;Items</h4>
@@ -26,11 +22,9 @@
 <div class="divCentered">
 	<% if !@itemsArr.empty? %>
 		<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel2", :nextPage => "/items/index"}%>
+		<br/>
+		<center><%= link_to "[View All Items]", "/items/all" %></center>
 	<% else %>
 		<p>No items</p>
 	<% end %>
-	<div class = "text-centered">
-		<br>
-	<%= link_to "[View All Items]", "/spaces/items?username=" + @username %>
-</div>
 </div>
