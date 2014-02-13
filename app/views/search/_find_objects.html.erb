@@ -1,0 +1,25 @@
+<br> 
+<% if @foundRooms.count != 0 %>
+	<h4 class="text-centered"><b><u>Found Rooms</u></b></h4>
+<% end %>
+<div class="row">
+<% @foundRooms.each do |photo| %>
+	<div class="col-lg-2 col-sm-3 col-xs-4">
+		<a href="/rooms/index/<%= photo.id %>">
+			<img class="thumbnail img-responsive" src="/images/<%= photo.imageURL %>" alt="" />
+		</a>
+	</div>
+<% end %>
+</div>
+<div class="row">
+<% if @foundItems.count != 0 %>
+	<h4 class="text-centered"><b><u>Found Items</u></b></h4>
+<% end %>
+<% @foundItems.each do |photo| %>
+	<div class="col-lg-2 col-sm-3 col-xs-4">
+		<a href="/items/index/<%= photo.id %>">
+			<img class="thumbnail img-responsive" src="/images/<%= photo.imageURL %>" alt="" />
+		</a>
+	</div>
+<% end %>
+</div>
