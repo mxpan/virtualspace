@@ -27,5 +27,4 @@ class ItemsController < ApplicationController
 	  		redirect_to :action => "index", :id => @item.id
   		end
 	end
-
 end

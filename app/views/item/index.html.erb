@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title> <%= @itemID %> </title>
+	</head>
+
+	<body>
+		<div class="div-centered">
+			<div class = "text-centered">
+				<h2>  <%= @itemID %>  </h2>
+					<button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/spaces/add'"> Edit </button>
+				<br>
+				<br>
+			</div>
+		</div>
+
+		<% if params[:id].nil? %>
+			<img src="/images/item03.jpg"/>
+		<% else %>
+			<img src="/images/<%= @itemID %>.jpg"/>
+		<% end %>
+
+		<br>
+
+		<div>
+			<b> Description: </b>
+			<br>&nbsp;&nbsp; The item to end all items.
+		</div>
+
+		</div>
+
+		<div>
+			<br>
+			<b> Tags: </b> 
+			<br>&nbsp;&nbsp; big, colorful, old
+		</div>
+
+	</body>
+
+</html>
