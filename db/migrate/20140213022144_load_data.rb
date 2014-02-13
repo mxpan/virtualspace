@@ -23,6 +23,18 @@ class LoadData < ActiveRecord::Migration
 
   	room = Room.new(:user_id => user.id, :name => "Empty Living Room", :description => "nothing but a red couch", :imageURL => "room06.jpg", :borrowedTimes => 1)
   	room.save
+
+    
+    tag = Tag.new(:name => "red")
+    tag.save
+    room.tags << tag
+
+    item = Item.new(:user_id => user.id, :room_id => room, :name => "crib", :description => "new crib for my new crib", :imageURL => "item03.jpg", :borrowedTimes => 3)
+    item.save
+
+    tag = Tag.new(:name => "crib")
+    tag.save
+    item.tags << tag
   end
 
   def down
