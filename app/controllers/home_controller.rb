@@ -35,13 +35,17 @@ class HomeController < ApplicationController
   end
 
   def post_create_account
-    user = User.new
-    user.email = params[:email]
-    user.password = params[:password]
-    user.username = params[:username]
+    @user = User.new
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.username = params[:username]
 
-    # user.save
-    redirect_to(:action => :index, :id => user.id)
+    if !@user.valid?
+      render(:action => :login)
+    else
+      @user.save
+      redirect_to(:action => :index)
+   end
   end
 
 

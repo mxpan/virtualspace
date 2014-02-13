@@ -1,3 +1,11 @@
+<% if !@user.nil? %>
+	<% @user.errors.full_messages.each do |e| %>
+	    <div class="alert alert-danger alert-dismissable">
+	    	 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	    	<%= e %>
+	    </div>
+	<% end %>
+<% end %>
 <center><h2>Welcome to VirtualSpace</h2></center>
 <br/>
 <center>
