@@ -18,6 +18,7 @@ class SpacesController < ApplicationController
     	else
 			@room = Room.new
 			@item = Item.new
+			@user = User.find_by_id(session[:user_id])
 		end
 	end
 end
