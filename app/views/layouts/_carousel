@@ -33,3 +33,15 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$("#<%= carouselID %>").swiperight(function () {
+			$("#<%= carouselID %>").carousel('prev');
+		});
+
+		$("#<%= carouselID %>").swipeleft(function () {
+			$("#<%= carouselID %>").carousel('next');
+		});
+	});
+</script>
