@@ -15,8 +15,8 @@
 	<br/>
 	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, prompt: true, :selected => @item.room_id) %>
 	<br/><br/>
-	<%= label_tag(:tags, "Tags") %>
-	<%= text_field_tag :tag1, @tagString, :placeholder => "No tags", :class => "form-control" %>
+	<%= label_tag(:tags, "Tags (separate with commas)") %>
+	<%= text_field_tag :tags, @tagString, :placeholder => "No tags", :class => "form-control" %>
 	<br/>
   	<center><%= submit_tag "Save Changes", :html => {:class => "btn btn-lg", :id => "redButton"} %></center>
 <% end %>
