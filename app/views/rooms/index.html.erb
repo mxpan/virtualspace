@@ -21,10 +21,14 @@
 
 <div>
 	<br/>
-	<b>Tags:</b> 
+	<b> Tags: </b> 
 	<br/>
 	<% @tags.each do |t| %>
+<<<<<<< HEAD
 		<%= t.name %>
+=======
+	<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
+>>>>>>> 142abf1b56b56b67e811012e8e168de07d941946
 	<% end %>
 </div>
 

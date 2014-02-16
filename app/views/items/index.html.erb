@@ -13,7 +13,7 @@
 	<b> Tags: </b> 
 	<br/>
 	<% @tags.each do |t| %>
-		<%= t.name %>
+	<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
 	<% end %>
 </div>
 
