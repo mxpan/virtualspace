@@ -1,20 +1,25 @@
-<h2>Edit Item "<%= @item.name %>"</h2>
+<h2>Edit "<%= @item.name %>"</h2>
 
-<img src="/images/<%= @item.imageURL %>"/>
-
-<div>
-	<b>Description:</b>
+<%= form_tag('/items/update', multipart: true, id: 'editRoomForm') do %>
+	<%= hidden_field_tag :item_id, @item.id %>
+	<%= label_tag(:name, "Item Name") %>
+	<%= text_field_tag :name, @item.name, :placeholder => "No name", :class => "form-control" %>
 	<br/>
-	<%= @item.description %>
-</div>
-
-<div>
-	<br>
-	<b> Tags: </b> 
+	<img src="/images/<%= @item.imageURL %>"/>
 	<br/>
-	<% @tags.each do |t| %>
-		<%= t.name %> 
-	<% end %>
-</div>
+	<%= label_tag(:imageURL, "Upload new Image") %>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
+  	<br/>
+	<%= label_tag(:description, "Description") %>
+	<%= text_area_tag(:description, @item.description, :placeholder => "No description", :class => "form-control", size: "24x6") %>
+	<br/>
+	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, prompt: true, :selected => @item.room_id) %>
+	<br/><br/>
+	<%= label_tag(:tags, "Tags") %>
+	<%= text_field_tag :tag1, @tagString, :placeholder => "No tags", :class => "form-control" %>
+	<br/>
+  	<center><%= submit_tag "Save Changes", :html => {:class => "btn btn-lg", :id => "redButton"} %></center>
+<% end %>
 
-<button type = "Button" class = "btn btn-lg" onclick = "window.location.href='/items/delete'">Delete Item</button>
+<br/>
+<center>Not feelin' this piece? <a href="/items/delete/<%= @item.id %>">Delete this item</a>!</center>

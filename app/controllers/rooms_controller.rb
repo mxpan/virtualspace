@@ -20,6 +20,51 @@ class RoomsController < ApplicationController
 		end
 	end
 
+	def edit
+		if session[:user_id].nil?
+       		flash[:error] = "Please log in or create an account"
+      		redirect_to(:controller => :home, :action => :login)
+    	else
+			@room = Room.find_by_id(params[:id])
+			if @room.nil?
+				flash[:error] = "Not a valid room"
+	  			redirect_to :action => "index", :controller => "spaces"
+			else
+				@tags = @room.tags
+				@tagString = ""
+				@tags.each do |t|
+					@tagString += t.name + ", "
+				end
+			end
+		end
+	end
+
+	def update
+		if session[:user_id].nil?
+       		flash[:error] = "Please log in or create an account"
+      		redirect_to(:controller => :home, :action => :login)
+    	else
+			@room = Room.find_by_id(params[:room_id])
+			if @room.nil?
+				flash[:error] = "Not a valid room"
+	  			redirect_to :action => "index", :controller => "spaces"
+			else
+		  		@room.name = params[:name]
+		  		@room.description = params[:description]
+		  		if (params[:imageURL])
+		  			uploaded_io = params[:imageURL]
+					File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
+			    			file.write(uploaded_io.read)
+			    		end
+		  			@room.imageURL = uploaded_io.original_filename
+		  		end
+		  		@room.save
+		  		flash[:notice] = "Room updated!"
+		  		redirect_to :action => "index", :id => @room.id
+		  	end
+		end
+	end
+
 	def delete
 		if session[:user_id].nil?
        		flash[:error] = "Please log in or create an account"

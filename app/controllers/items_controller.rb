@@ -25,7 +25,44 @@ class ItemsController < ApplicationController
       		redirect_to(:controller => :home, :action => :login)
 	    else
 			@item = Item.find_by_id(params[:id])
-			@tags = @item.tags 
+			if @item.nil?
+				flash[:error] = "Not a valid item"
+	  			redirect_to :action => "index", :controller => "spaces"
+			else
+				@user = User.find_by_id(session[:user_id])
+				@tags = @item.tags
+				@tagString = ""
+				@tags.each do |t|
+					@tagString += t.name + ", "
+				end
+			end
+		end
+	end
+
+	def update
+		if session[:user_id].nil?
+       		flash[:error] = "Please log in or create an account"
+      		redirect_to(:controller => :home, :action => :login)
+    	else
+			@item = Item.find_by_id(params[:item_id])
+			if @item.nil?
+				flash[:error] = "Not a valid item"
+	  			redirect_to :action => "index", :controller => "spaces"
+			else
+		  		@item.name = params[:name]
+		  		@item.description = params[:description]
+		  		@item.room_id = params[:item][:room_id]
+		  		if (params[:imageURL])
+		  			uploaded_io = params[:imageURL]
+					File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
+			    			file.write(uploaded_io.read)
+			    		end
+		  			@item.imageURL = uploaded_io.original_filename
+		  		end
+		  		@item.save
+		  		flash[:notice] = "Item updated!"
+		  		redirect_to :action => "index", :id => @item.id
+		  	end
 		end
 	end
 
