@@ -31,5 +31,5 @@
 <br/><br/>
 
 <% if session[:user_id] ==  @room.user_id%>
-<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/delete/<%= @room.id %>'">Delete Room</button></center>
+<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
 <% end %>

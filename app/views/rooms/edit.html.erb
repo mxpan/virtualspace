@@ -1,20 +1,23 @@
-<h2>Edit Item "<%= @room.name %>"</h2>
+<h2>Edit "<%= @room.name %>"</h2>
 
-<img src="/images/<%= @room.imageURL %>"/>
-
-<div>
-	<b>Description:</b>
+<%= form_tag('/rooms/update', multipart: true, id: 'editRoomForm') do %>
+	<%= hidden_field_tag :room_id, @room.id %>
+	<%= label_tag(:name, "Room Name") %>
+	<%= text_field_tag :name, @room.name, :placeholder => "No name", :class => "form-control" %>
 	<br/>
-	<%= @room.description %>
-</div>
-
-<div>
-	<br>
-	<b> Tags: </b> 
+	<img src="/images/<%= @room.imageURL %>"/>
 	<br/>
-	<% @tags.each do |t| %>
-		<%= t.name %> 
-	<% end %>
-</div>
+	<%= label_tag(:imageURL, "Upload new Image") %>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
+  	<br/>
+	<%= label_tag(:description, "Description") %>
+	<%= text_area_tag(:description, @room.description, :placeholder => "No description", :class => "form-control", size: "24x6") %>
+	<br/>
+	<%= label_tag(:tags, "Tags") %>
+	<%= text_field_tag :tag1, @tagString, :placeholder => "No tags", :class => "form-control" %>
+	<br/>
+  	<center><%= submit_tag "Save Changes", :html => {:class => "btn btn-lg", :id => "redButton"} %></center>
+<% end %>
 
-<button type = "Button" class = "btn btn-lg" onclick = "window.location.href='/items/delete'">Delete Room</button>
+<br/>
+<center>Not feelin' this style? <a href="/rooms/delete/<%= @room.id %>">Delete this room</a>!</center>
