@@ -22,6 +22,8 @@
     http://stackoverflow.com/questions/19351113/twitter-bootstrap-modal-not-showing-on-page-load-grey-screen 
   -->
   <% if @user.first_login == 1 %>
+    <% @user.first_login = 0 %>
+    <% @user.save %>
     <div class="modal fade" id="modal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

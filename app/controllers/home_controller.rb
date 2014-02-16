@@ -24,8 +24,6 @@ class HomeController < ApplicationController
     if !@user.nil?
       if @user.password_valid?(password)
         session[:user_id] = @user.id
-        @user.first_login = 0
-        @user.save
         redirect_to(:action => :index)
       else
         flash[:error] = "Invalid Username or Password"
