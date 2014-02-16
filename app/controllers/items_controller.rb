@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
    		else
 			@item = Item.find_by_id(params[:id])
 			@tags = @item.tags
-
 			@user = User.find_by_id(session[:user_id])
 		end
 	end

@@ -13,7 +13,7 @@
 	<%= label_tag(:description, "Description") %>
 	<%= text_area_tag(:description, @item.description, :placeholder => "No description", :class => "form-control", size: "24x6") %>
 	<br/>
-	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, prompt: true, :selected => @item.room_id) %>
+	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, :prompt => "None", :selected => @item.room_id) %>
 	<br/><br/>
 	<%= label_tag(:tags, "Tags (separate with commas)") %>
 	<%= text_field_tag :tags, @tagString, :placeholder => "No tags", :class => "form-control" %>
