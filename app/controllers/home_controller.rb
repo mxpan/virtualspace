@@ -6,7 +6,7 @@ class HomeController < ApplicationController
       redirect_to(:action => :login)
     else
       @user = User.find_by_id(session[:user_id])
-      @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
+      @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY updated_at DESC")
     end
   end
 

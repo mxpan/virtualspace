@@ -1,22 +1,30 @@
 <h2>What's Popular
   <p class="lead">See what other users have designed</p>
 </h2>
+<center>
+  <a href="/search/index">
+    <button type="Button" class="btn btn-sm center">
+      Search For More
+    </button>
+  </a>&nbsp;
+  <a href="/spaces/index/<%= session[:user_id] %>">
+    <button type="Button" class="btn btn-sm center">
+      Go to Your Spaces
+    </button>
+  </a>
+</center>
+<br>
 <div class="row">
   <% @new_items.each do |i| %>
   <div class="col-xs-6">
       <a href="/rooms/index/<%= i.id %>">
-           <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+          <div class="thumbnailContainer">
+            <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+          </div>
       </a>
-    </div>
+  </div>
   <% end %>
 
-  <center>
-    <a href="/search/index">
-      <button type="Button" class="btn primary large center">
-        Search For More
-      </button>
-    </a>
-  </center>
 
   <!-- Modal code inspired by the 2nd answer to the following StackOverflow question: 
     http://stackoverflow.com/questions/19351113/twitter-bootstrap-modal-not-showing-on-page-load-grey-screen 

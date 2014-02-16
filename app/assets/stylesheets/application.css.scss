@@ -52,3 +52,11 @@ button {
 }
 
 #redButton:hover{}
+
+.thumbnailContainer{
+	width: 140px; height: 140px; overflow: hidden;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
+
+.thumbnailContainer img { width: 100%; }

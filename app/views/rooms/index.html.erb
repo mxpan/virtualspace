@@ -13,7 +13,7 @@ you
 <center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
 <% else %>
 	<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Borrow</button></center>
-<% end %><br/><br/>
+<% end %><br/>
 
 <img src="/images/<%= @room.imageURL %>"/>
 
