@@ -1,14 +1,345 @@
 <h2>What's Popular
-	<p class="lead">See what other users have designed</p>
+  <p class="lead">See what other users have designed</p>
 </h2>
 <div class="row">
-<% @new_items.each do |i| %>
-	<div class="col-lg-2 col-sm-3 col-xs-4">
-		<a href="/rooms/index/<%= i.id %>">
-		     <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
-		</a>
-	</div>
-<% end %>
+  <% @new_items.each do |i| %>
+    <div class="col-lg-2 col-sm-3 col-xs-4">
+      <a href="/rooms/index/<%= i.id %>">
+           <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+      </a>
+    </div>
+  <% end %>
 
-<center><a href="/search/index"><button type="Button" class="btn primary large center">Search For More</button></a></center>
+  <center>
+    <a href="/search/index">
+      <button type="Button" class="btn primary large center">
+        Search For More
+      </button>
+    </a>
+  </center>
+
+  <!-- Modal code inspired by the 2nd answer to the following StackOverflow question: 
+    http://stackoverflow.com/questions/19351113/twitter-bootstrap-modal-not-showing-on-page-load-grey-screen 
+  -->
+  <% if @user.first_login == 1 %>
+    <div class="modal fade" id="modal0" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4>Welcome to VirtualSpace!</h4>
+          </div>
+          <div class = "modal-body text-centered">
+              <p> Hi there <%= @user.username %>, welcome to VirtualSpace! 
+                <br>
+                <br>
+                This app gives you a platform to showcase
+                your personal spaces to the world. You'll become part of a vibrant community of designers and have 
+                the chance to learn from, share with, and be inspired by them.
+                <br>
+                <br>
+                Click "Tell Me More" to go through a brief tutorial of the app, or click "Close" to begin exploring the app yourself.
+                <br>
+                <br>
+                Have fun, and happy designing!
+              </p>
+            </div>
+          <div class="modal-footer">
+                <button type = "button" class = "btn btn-default pull-left" data-dismiss = "modal"> Close </button>
+
+                <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "startTutorial()";> 
+                    Tell Me More 
+                </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- PAGE 1 OF TUTORIAL -->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg1.png"/>
+          <p> Clicking on the three-line icon (highlighted in yellow at the top right) brings up the site's main menu. Click on this to bring up the key parts of the site. Right now, let's take a look at "Your Spaces". </p>
+      </div>
+      <div class="modal-footer">
+         <button type = "button" class = "btn btn-default pull-left" data-dismiss = "modal"> End Tutorial </button>
+
+         <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page2()";> 
+            <span class = "glyphicon glyphicon-arrow-right"> </span> 
+          </button>  
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 OF TUTORIAL -->
+  <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg3.png"/>
+          <p> When you click on "Your Spaces", you'll have the option of adding either a room (i.e. a space) or an item to your collection. Note, however, that items must be added to existing rooms and can't be added independently. </p>
+      </div>
+      <div class="modal-footer">
+
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "startTutorial()";> 
+          <span class = "glyphicon glyphicon-arrow-left"> </span> 
+        </button>             
+
+        <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page3()";> 
+          <span class = "glyphicon glyphicon-arrow-right"> </span> 
+        </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- PAGE 3 OF TUTORIAL -->
+  <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg7.png"/>
+          <p> Once you add a room/item to your collection, it'll show up on your spaces page. From here, you can scroll through each room or item and click on the image of one to learn more about it. </p>
+      </div>
+      <div class="modal-footer">
+
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page2()";> 
+          <span class = "glyphicon glyphicon-arrow-left"> </span> 
+        </button> 
+
+        <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page4()";> 
+          <span class = "glyphicon glyphicon-arrow-right"> </span> 
+        </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- PAGE 4 OF TUTORIAL -->
+  <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg8.png"/>
+          <p> From here, you can read a description of the item and see the keywords/tags associated with it. You can make changes to anything on this page, including the picture it displays. </p>
+      </div>
+      <div class="modal-footer">
+
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page3()";> 
+          <span class = "glyphicon glyphicon-arrow-left"> </span> 
+        </button> 
+
+        <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page5()";> 
+          <span class = "glyphicon glyphicon-arrow-right"> </span> 
+        </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- PAGE 5 OF TUTORIAL -->
+  <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg9.png"/>
+          <p> Now let's take a look at the "Search" option, which we can find by clicking on the main menu icon. </p>
+      </div>
+      <div class="modal-footer">
+
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page4()";> 
+        <span class = "glyphicon glyphicon-arrow-left"> </span> 
+      </button> 
+
+      <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page6()";> 
+        <span class = "glyphicon glyphicon-arrow-right"> </span> 
+      </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- PAGE 6 OF TUTORIAL -->
+  <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg10.png"/>
+          <p> This'll bring up an empty search bar that you can fill with word or expression you want. Any rooms/items with tags that match your query will appear on the screen as you type. </p>
+      </div>
+      <div class="modal-footer">
+
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page5()";> 
+        <span class = "glyphicon glyphicon-arrow-left"> </span> 
+      </button> 
+
+      <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page7()";> 
+        <span class = "glyphicon glyphicon-arrow-right"> </span> 
+      </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- PAGE 7 OF TUTORIAL -->
+  <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg11.png"/>
+          <p> To go back to the home page (the page that shows you what other users are up to), click on either the "Home" option on the main menu or on the VirtualSpace logo in the top left corner on the screen. </p>
+      </div>
+      <div class="modal-footer">
+
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page6()";> 
+        <span class = "glyphicon glyphicon-arrow-left"> </span> 
+      </button> 
+
+      <button type = "button" class = "btn btn-default" data-dismiss = "modal"> End Tutorial </button> 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-right" data-dismiss = "modal" onclick = "page8()";> 
+        <span class = "glyphicon glyphicon-arrow-right"> </span> 
+      </button>  
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+    <!-- PAGE 8 OF TUTORIAL -->
+  <div class="modal fade" id="modal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4> Tutorial </h4>
+      </div>
+      <div class = "modal-body text-centered">
+          <img src = "/images/tutorialImages/pg13.png"/>
+          <p> To manage your personal profile information, click on the "Settings" option. Click on "Help" to learn more about each part of the app in greater detail. Click "Logout" to log out of your account. </p>
+      </div>
+      <div class="modal-footer">
+
+      <button id = "tutorial" type = "button" class = "btn btn-primary pull-left" data-dismiss = "modal" onclick = "page7()";> 
+        <span class = "glyphicon glyphicon-arrow-left"> </span> 
+      </button> 
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <button type = "button" class = "btn btn-default pull-right" data-dismiss = "modal"> Finish Tutorial </button> 
+
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <script type = "text/javascript">
+    $(window).load(function(){
+        $('#modal0').modal('show');
+    });
+
+    function startTutorial(){
+       $('#modal1').modal('show');
+    }
+
+    function page2(){
+       $('#modal2').modal('show');
+    }
+
+    function page3(){
+       $('#modal3').modal('show');
+    }
+
+    function page4(){
+       $('#modal4').modal('show');
+    }
+
+    function page5(){
+       $('#modal5').modal('show');
+    }
+
+    function page6(){
+       $('#modal6').modal('show');
+    }
+
+    function page7(){
+       $('#modal7').modal('show');
+    }
+
+    function page8(){
+      $('#modal8').modal('show');
+    }
+
+
+  </script>
+
 </div>

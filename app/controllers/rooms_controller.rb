@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
 				@tags = @room.tags
 				@tagString = ""
 				@tags.each do |t|
-					@tagString += t.name + ", "
+					@tagString = @tagString + t.name + ", "
 				end
 			end
 		end
@@ -57,6 +57,20 @@ class RoomsController < ApplicationController
 			    			file.write(uploaded_io.read)
 			    		end
 		  			@room.imageURL = uploaded_io.original_filename
+		  		end
+		  		@room.tags.clear
+		  		if params[:tags] != ""
+		  			# split tag string using commas
+		  			tagsArr = params[:tags].split(',').map(&:strip)
+		  			tagsArr.each do |tagName|
+			  			tag = Tag.find_by_name(params[:tagName])
+			  			if tag.nil?
+			  				tag = Tag.new
+			  				tag.name = tagName
+			  				tag.save
+			  			end
+			  			@room.tags << tag
+		  			end
 		  		end
 		  		@room.save
 		  		flash[:notice] = "Room updated!"
@@ -97,34 +111,18 @@ class RoomsController < ApplicationController
 		    			file.write(uploaded_io.read)
 		  		end
 
-		  		if params[:tag1] != ""
-		  			tag1 = Tag.find_by_name(params[:tag1])
-		  			if tag1.nil?
-		  				tag1 = Tag.new
-		  				tag1.name = params[:tag1]
-		  				tag1.save
+		  		if params[:tags] != ""
+		  			# split tag string using commas
+		  			tagsArr = params[:tags].split(',').map(&:strip)
+		  			tagsArr.each do |tagName|
+			  			tag = Tag.find_by_name(params[:tagName])
+			  			if tag.nil?
+			  				tag = Tag.new
+			  				tag.name = tagName
+			  				tag.save
+			  			end
+			  			@room.tags << tag
 		  			end
-		  			@room.tags << tag1
-		  		end
-
-		  		if params[:tag2] != ""
-		  			tag2 = Tag.find_by_name(params[:tag2])
-		  			if tag2.nil?
-		  				tag2 = Tag.new
-		  				tag2.name = params[:tag2]
-		  				tag2.save
-		  			end
-		  			@room.tags << tag2
-		  		end
-
-		  		if params[:tag3] != ""
-		  			tag3 = Tag.find_by_name(params[:tag3])
-		  			if tag3.nil?
-		  				tag3 = Tag.new
-		  				tag3.name = params[:tag3]
-		  				tag3.save
-		  			end
-		  			@room.tags << tag3
 		  		end
 
 		  		@room.user_id = session[:user_id]

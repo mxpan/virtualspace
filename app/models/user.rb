@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :email, :password_digest, :username
+  attr_accessible :email, :password_digest, :username, :first_login
   has_many :rooms
   has_many :items
 
