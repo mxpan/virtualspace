@@ -12,6 +12,23 @@
 	<% end %>
 </div>
 
+<br><br><center><button id="addItemToRoomBtn" type = "Button" class = "btn btn-sm" onclick = "addItem()">Add Item to Room</button></center>
+
+<div id="addItemDiv">
+	<br><%= form_tag('/items/create', multipart: true, id: 'addItemForm') do %>
+	<%= text_field_tag :name, nil, :placeholder => "Item Name", :class => "form-control" %>
+	<br/>
+	<%= text_area_tag(:description, nil, :placeholder => "Description", :class => "form-control", size: "24x6") %>
+	<%= hidden_field(:item, :room_id, :value => @room.id) %>
+	<br/>
+	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
+	<br/>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
+  	<br/>
+  	<%= submit_tag "Add Item", :html => { :class => "btn btn-lg" } %>
+<% end %>
+</div>
+
 <div class="divCentered">
 	<br>
 	<b> Items: </b>
@@ -42,3 +59,20 @@
 <% else %>
 	<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Borrow</button></center>
 <% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#addItemDiv").hide();
+	});
+
+	function addItem(){
+		if ($("#addItemToRoomBtn").text() == "Add Item to Room"){
+			// show form
+			$("#addItemToRoomBtn").text("Cancel Adding Item");
+			$("#addItemDiv").show("medium");
+		} else {
+			$("#addItemToRoomBtn").text("Add Item to Room");
+			$("#addItemDiv").hide("medium");
+		}
+	}
+</script>

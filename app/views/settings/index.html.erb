@@ -1,0 +1,39 @@
+<h2>Settings</h2>
+<br><h4 class="text-centered">Email: <%= @user.email %></h4>
+<center><button type="button" id="redButton" class="btn btn-sm" onclick="saveChanges()">Save Changes</button></center>
+<br><br>
+<p>Username</p><input id="usernameInput" class="fullWidth" value=<%= @user.username %>>
+<br><br><br><center><button type="button" id="showPasswordInput" class="btn btn-sm">I want to change my password</button></center>
+<br>
+
+<div id="changePasswordDiv">
+	<p>New Password</p>
+	<input id="passwordInput" class="fullWidth">
+</div>
+
+<br><br><br>
+<center>Say it ain't so!  But if you really must leave VirtualSpace...<a href="/settings/post_delete">Delete my account</a></center>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$("#changePasswordDiv").hide();
+	});
+
+	$("#showPasswordInput").click(function(){
+		if ($("#showPasswordInput").text() == "I want to change my password"){
+			$("#showPasswordInput").text("Cancel Password Change");
+		} else {
+			$("#showPasswordInput").text("I want to change my password");
+		}
+		$("#changePasswordDiv").toggle("medium");
+	});
+
+	function saveChanges(){
+		var queryString = "username="+$('#usernameInput').val()+"&password=";
+		if( $("#changePasswordDiv").is(":visible") && $("#passwordInput").val != "" ){
+			queryString = queryString+$("#passwordInput").val();
+		}
+		window.location.href = "/settings/post_save?"+queryString;
+	}
+</script>
