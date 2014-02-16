@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
 		  		@item.tags.clear
 		  		if params[:tags] != ""
 		  			# split tag string using commas
-		  			tagsArr = params[:tags].split(/[,, ]/)
+		  			tagsArr = params[:tags].split(',').map(&:strip)
 		  			tagsArr.each do |tagName|
 			  			tag = Tag.find_by_name(params[:tagName])
 			  			if tag.nil?
@@ -114,7 +114,7 @@ class ItemsController < ApplicationController
 
 		  		if params[:tags] != ""
 		  			# split tag string using commas
-		  			tagsArr = params[:tags].split(/[,, ]/)
+		  			tagsArr = params[:tags].split(',').map(&:strip)
 		  			tagsArr.each do |tagName|
 			  			tag = Tag.find_by_name(params[:tagName])
 			  			if tag.nil?

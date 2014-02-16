@@ -61,7 +61,7 @@ class RoomsController < ApplicationController
 		  		@room.tags.clear
 		  		if params[:tags] != ""
 		  			# split tag string using commas
-		  			tagsArr = params[:tags].split(/[,, ]/)
+		  			tagsArr = params[:tags].split(',').map(&:strip)
 		  			tagsArr.each do |tagName|
 			  			tag = Tag.find_by_name(params[:tagName])
 			  			if tag.nil?
@@ -113,7 +113,7 @@ class RoomsController < ApplicationController
 
 		  		if params[:tags] != ""
 		  			# split tag string using commas
-		  			tagsArr = params[:tags].split(/[,, ]/)
+		  			tagsArr = params[:tags].split(',').map(&:strip)
 		  			tagsArr.each do |tagName|
 			  			tag = Tag.find_by_name(params[:tagName])
 			  			if tag.nil?
