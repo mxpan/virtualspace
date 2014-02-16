@@ -12,6 +12,14 @@
 	<% end %>
 </div>
 
+<br/>
+<b>In Room:</b> 
+<% if @item.room %>
+<a href="/rooms/index/<%= @item.room.id %>"><%= @item.room.name %></a>
+<% else %>
+None
+<% end %>
+
 <div>
 	<br>
 	<b> Tags: </b> 
