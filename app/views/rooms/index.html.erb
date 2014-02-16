@@ -5,16 +5,20 @@
 <div>
 	<b>Description:</b>
 	<br/>
-	<%= @room.description %>
+	<% if @room.description.length == 0 %>
+		<p>No description</p>
+	<% else %>
+		<%= @room.description %>
+	<% end %>
 </div>
 
 <div class="divCentered">
 	<br>
 	<b> Items: </b>
-	<% if @items %>
+	<% if @items.count != 0 %>
 		<%= render :partial => "layouts/carousel", :locals => {:items => @room.items, :carouselID => "carousel2", :nextPage => "/items/index"} %>
 	<% else %>
-		No items
+		<p>No items</p>
 	<% end %>
 </div>
 
@@ -22,8 +26,12 @@
 	<br/>
 	<b> Tags: </b> 
 	<br/>
-	<% @tags.each do |t| %>
-	<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
+	<% if @tags.count == 0 %>
+		<p>No tags</p>
+	<% else %>
+		<% @tags.each do |t| %>
+		<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
+		<% end %>
 	<% end %>
 </div>
 
@@ -31,4 +39,6 @@
 
 <% if session[:user_id] ==  @room.user_id%>
 <center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
+<% else %>
+	<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Borrow</button></center>
 <% end %>

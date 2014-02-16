@@ -3,6 +3,7 @@ class LoadData < ActiveRecord::Migration
     #Create user
     user = User.new(:email => "a", :username => "a")
     user.password = "a"
+    user.first_login = 1
     user.save
 
   	#Create rooms

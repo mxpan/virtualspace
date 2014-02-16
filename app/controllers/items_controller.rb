@@ -6,6 +6,8 @@ class ItemsController < ApplicationController
    		else
 			@item = Item.find_by_id(params[:id])
 			@tags = @item.tags
+
+			@user = User.find_by_id(session[:user_id])
 		end
 	end
 
@@ -136,5 +138,26 @@ class ItemsController < ApplicationController
 		  		redirect_to :action => "index", :id => @item.id
 	  		end
 		end
+	end
+
+	def post_borrow
+		roomID = params[:room]
+		item = Item.find_by_id(params[:item])
+
+		borrowedItem = Item.new
+		borrowedItem.user_id = session[:user_id]
+		borrowedItem.name = item.name
+		borrowedItem.description = item.description
+		borrowedItem.imageURL = item.imageURL
+		borrowedItem.borrowedTimes = 0
+
+		if roomID != -1
+			borrowedItem.room_id = roomID	
+		end
+
+		borrowedItem.save
+
+		flash[:notice] = borrowedItem.name+" was added to your spaces"
+		redirect_to :controller=>:spaces, :action => :index
 	end
 end

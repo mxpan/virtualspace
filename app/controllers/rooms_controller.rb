@@ -135,4 +135,32 @@ class RoomsController < ApplicationController
 	  		end
 		end
 	end
+
+	def post_borrow
+		roomID = params[:room]
+		desiredRoom = Room.find_by_id(roomID)
+		borrowedRoom = Room.new
+		borrowedRoom.name = desiredRoom.name
+		borrowedRoom.description = desiredRoom.description
+		borrowedRoom.imageURL = desiredRoom.imageURL
+		borrowedRoom.borrowedTimes = 0
+		borrowedRoom.user_id = session[:user_id]
+
+		borrowedRoom.save
+
+		desiredRoom.items.each do |item|
+			borrowedItem = Item.new
+			borrowedItem.user_id = session[:user_id]
+			borrowedItem.room_id = roomID
+			borrowedItem.name = item.name
+			borrowedItem.description = item.description
+			borrowedItem.imageURL = item.imageURL
+			borrowedItem.borrowedTimes = 0
+
+			borrowedItem.save
+		end
+
+		flash[:notice] = borrowedRoom.name+" was added to your spaces"
+		redirect_to :controller=>:spaces, :action => :index
+	end
 end

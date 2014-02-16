@@ -5,30 +5,44 @@
 <div>
 	<b>Description:</b>
 	<br/>
-	<%= @item.description %>
+	<% if @item.description.length == 0 %>
+		<p>No description</p>
+	<% else %>
+		<%= @item.description %>
+	<% end %>
 </div>
 
 <div>
 	<br>
 	<b> Tags: </b> 
 	<br/>
-	<% @tags.each do |t| %>
-	<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
+	<% if @tags.count == 0 %>
+		<p>No tags</p>
+	<% else %>
+		<% @tags.each do |t| %>
+		<button type = "Button" class = "btn btn-xs" onclick = "window.location.href = '/search/index?search=<%= t.name %>'"><%= t.name %></button>
+		<% end %>
 	<% end %>
 </div>
 
 <br/><br/>
 
 <% if session[:user_id] ==  @item.user_id%>
-<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit Item</button></center>
+	<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit Item</button></center>
 <% else %>
-<center><button type = "Button" class = "btn btn-lg" onclick = "borrowClicked()" id="borrowButton">Borrow</button></center>
+	<center><button type = "Button" class = "btn btn-lg" onclick = "borrowClicked()" id="borrowButton">Borrow</button></center>
 <% end %>
 <div id="roomSelect">
 	<br><p>Select a room in which to place the item.</p>
-	<select>
-		<option value="None">None</option>
+
+	<input type="hidden" id="itemID" value="<%= @item.id %>">
+	<select id="borrowRoomSelector">
+		<option value=-1>None</option>
+		<% @user.rooms.each do |room| %>
+			<option value=<%= room.id %>><%= room.name %></option>
+		<% end %>
 	</select>
+	<br><br>
 	<center><button type = "Button" class = "btn btn-lg" onclick = "confirmClicked()">Confirm</button></center>
 </div>
 
@@ -49,5 +63,10 @@
 		}
 
 		$("#roomSelect").toggle("medium");
+	}
+
+	function confirmClicked(){
+		newURL = "/items/post_borrow?room="+$("#borrowRoomSelector").val()+"&item="+$("#itemID").val();
+		window.location.href = newURL;
 	}
 </script>
