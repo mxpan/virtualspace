@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'Home', {:controller=>"home", :action=>"index"} %></li>
 <li><%= link_to 'Search', {:controller=>"search", :action=>"index"} %></li>
-<li><%= link_to 'Your Spaces', {:controller=>"spaces", :action=>"index"} %></li>
+<li><%= link_to 'Your Spaces', {:controller=>"spaces", :action=>"index", :id=>session[:user_id]} %></li>
 <li><%= link_to 'Settings', {:controller=>"settings", :action=>"index"} %></li>
 <li><%= link_to 'Help', {:controller=>"help", :action=>"index"} %></li>
 <li><%= link_to 'Logout', {:controller=>"home", :action=>"logout"} %></li>

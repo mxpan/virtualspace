@@ -1,29 +1,31 @@
 <div class="text-centered">
 	<div class="pageTitle text-centered">
-		<h2><%= @username %>'s Spaces</h2>
+		<h2><%= @user.username %>'s Spaces</h2>
 	</div>
+	<% if session[:user_id] == @user.id %>
 	<button type="button" class="btn btn-lg" onclick="window.location.href='/spaces/add'">Add Room/Item</button>
+	<% end %>
 </div>
 
 <div class="carouselLabel">
-	<h4>My<br>&nbsp;&nbsp;Rooms</h4>
+	<h4>Rooms</h4>
 </div>
 <% if !@roomsArr.empty? %>
 	<%= render :partial => "layouts/carousel", :locals => {:items => @roomsArr, :carouselID => "carousel1", :nextPage => "/rooms/index"}%>
 	<br/>
-	<center><%= link_to "[View All Rooms]", "/rooms/all" %></center>
+	<center><%= link_to "[View All Rooms]", {:controller=>"rooms", :action=>"all", :id=>@user.id} %></center>
 <% else %>
 	<p>No rooms</p>
 <% end %>
 
 <div class="carouselLabel">
-	<h4>My<br>&nbsp;&nbsp;Items</h4>
+	<h4>Items</h4>
 </div>
 <div class="divCentered">
 	<% if !@itemsArr.empty? %>
 		<%= render :partial => "layouts/carousel", :locals => {:items => @itemsArr, :carouselID => "carousel2", :nextPage => "/items/index"}%>
 		<br/>
-		<center><%= link_to "[View All Items]", "/items/all" %></center>
+		<center><%= link_to "[View All Items]", {:controller=>"items", :action=>"all", :id=>@user.id} %></center>
 	<% else %>
 		<p>No items</p>
 	<% end %>

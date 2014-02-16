@@ -4,10 +4,9 @@ class SpacesController < ApplicationController
 	       	flash[:error] = "Please log in or create an account"
 	      	redirect_to(:controller => :home, :action => :login)
 	    else
-			user = User.find_by_id(session[:user_id])
-			@username = user.username
-			@itemsArr = user.items
-			@roomsArr = user.rooms
+			@user = User.find_by_id(params[:id])
+			@itemsArr = @user.items
+			@roomsArr = @user.rooms
 		end
 	end
 
@@ -18,7 +17,7 @@ class SpacesController < ApplicationController
     	else
 			@room = Room.new
 			@item = Item.new
-			@user = User.find_by_id(session[:user_id])
+			@user = User.find_by_id(params[:id])
 		end
 	end
 end

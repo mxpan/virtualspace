@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
        		flash[:error] = "Please log in or create an account"
       		redirect_to(:controller => :home, :action => :login)
     	else
-			@user = User.find_by_id(session[:user_id])
-			@items = Item.find_all_by_user_id(session[:user_id])
+			@user = User.find_by_id(params[:id])
+			@items = Item.find_all_by_user_id(params[:id])
 		end
 	end
 
@@ -157,6 +157,6 @@ class ItemsController < ApplicationController
 		borrowedItem.save
 
 		flash[:notice] = borrowedItem.name+" was added to your spaces"
-		redirect_to :controller=>:spaces, :action => :index
+		redirect_to :controller=>:spaces, :action => :index, :id => session[:user_id]
 	end
 end

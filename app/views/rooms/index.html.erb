@@ -1,18 +1,28 @@
 <h2><%= @room.name %></h2>
+<center><p>Owned by: 
+<a href="/spaces/index/<%= @room.user_id %>">
+<% if session[:user_id] == @room.user_id %>
+you
+<% else %>
+<%= @room.user.username %>
+<% end %>
+</a>
+</p></center>
 
 <img src="/images/<%= @room.imageURL %>"/>
 
-<div>
-	<b>Description:</b>
-	<br/>
-	<% if @room.description.length == 0 %>
-		<p>No description</p>
-	<% else %>
-		<%= @room.description %>
-	<% end %>
-</div>
+<br/>
+<b>Description:</b>
+<br/>
+<% if @room.description.length == 0 %>
+	<p>No description</p>
+<% else %>
+	<%= @room.description %>
+<% end %>
 
+<% if session[:user_id] == @room.user_id %>
 <br><br><center><button id="addItemToRoomBtn" type = "Button" class = "btn btn-sm" onclick = "addItem()">Add Item to Room</button></center>
+<% end %>
 
 <div id="addItemDiv">
 	<br><%= form_tag('/items/create', multipart: true, id: 'addItemForm') do %>
