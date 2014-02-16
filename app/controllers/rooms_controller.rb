@@ -151,7 +151,7 @@ class RoomsController < ApplicationController
 		desiredRoom.items.each do |item|
 			borrowedItem = Item.new
 			borrowedItem.user_id = session[:user_id]
-			borrowedItem.room_id = roomID
+			borrowedItem.room_id = borrowedRoom.id
 			borrowedItem.name = item.name
 			borrowedItem.description = item.description
 			borrowedItem.imageURL = item.imageURL

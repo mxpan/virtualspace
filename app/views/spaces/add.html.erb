@@ -1,4 +1,4 @@
-<h2>Add a Room/Item</h2>
+<h2 id="header">Add a Room/Item</h2>
 
 <center>
 <button id="roomBtn" type="Button" class="btn btn-lg">Add Room</button>
@@ -59,10 +59,16 @@
 	$("#roomBtn").click(function(){
 		$("#addItemForm").hide();
 		$("#addRoomForm").show("medium");
+
+		$("#header").text("Add a Room");
 	});
 
 	$("#itemBtn").click(function(){
 		$("#addRoomForm").hide();
 		$("#addItemForm").show("medium");
+
+		$("#header").text("Add an Item");
 	});
+
+
 </script>
