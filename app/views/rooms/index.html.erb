@@ -9,6 +9,12 @@ you
 </a>
 </p></center>
 
+<% if session[:user_id] ==  @room.user_id%>
+<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
+<% else %>
+	<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Borrow</button></center>
+<% end %><br/><br/>
+
 <img src="/images/<%= @room.imageURL %>"/>
 
 <br/>
@@ -61,14 +67,6 @@ you
 		<% end %>
 	<% end %>
 </div>
-
-<br/><br/>
-
-<% if session[:user_id] ==  @room.user_id%>
-<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
-<% else %>
-	<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Borrow</button></center>
-<% end %>
 
 <script type="text/javascript">
 	$(document).ready(function(){

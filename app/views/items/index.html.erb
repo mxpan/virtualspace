@@ -9,6 +9,25 @@ you
 </a>
 </p></center>
 
+<% if session[:user_id] ==  @item.user_id%>
+	<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit Item</button></center>
+<% else %>
+	<center><button type = "Button" class = "btn btn-sm" onclick = "borrowClicked()" id="borrowButton">Borrow</button></center>
+<% end %>
+<div id="roomSelect">
+	<br><p>Select a room in which to place the item.</p>
+
+	<input type="hidden" id="itemID" value="<%= @item.id %>">
+	<select id="borrowRoomSelector">
+		<option value=-1>None</option>
+		<% @user.rooms.each do |room| %>
+			<option value=<%= room.id %>><%= room.name %></option>
+		<% end %>
+	</select>
+	<br><br>
+	<center><button type = "Button" class = "btn btn-sm" onclick = "confirmClicked()">Confirm</button></center>
+</div><br/><br/>
+
 <img src="/images/<%= @item.imageURL %>"/>
 
 <div>
@@ -42,27 +61,6 @@ None
 	<% end %>
 </div>
 
-<br/><br/>
-
-<% if session[:user_id] ==  @item.user_id%>
-	<center><button type = "Button" class = "btn btn-lg" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit Item</button></center>
-<% else %>
-	<center><button type = "Button" class = "btn btn-lg" onclick = "borrowClicked()" id="borrowButton">Borrow</button></center>
-<% end %>
-<div id="roomSelect">
-	<br><p>Select a room in which to place the item.</p>
-
-	<input type="hidden" id="itemID" value="<%= @item.id %>">
-	<select id="borrowRoomSelector">
-		<option value=-1>None</option>
-		<% @user.rooms.each do |room| %>
-			<option value=<%= room.id %>><%= room.name %></option>
-		<% end %>
-	</select>
-	<br><br>
-	<center><button type = "Button" class = "btn btn-lg" onclick = "confirmClicked()">Confirm</button></center>
-</div>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#roomSelect").hide();
@@ -76,7 +74,7 @@ None
 		} else {
 			$("#borrowButton").text("Borrow");
 			$("#borrowButton").removeClass("btn-sm");
-			$("#borrowButton").addClass("btn-lg");
+			$("#borrowButton").addClass("btn-sm");
 		}
 
 		$("#roomSelect").toggle("medium");
