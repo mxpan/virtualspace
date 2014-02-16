@@ -5,6 +5,7 @@ class HomeController < ApplicationController
        flash[:error] = "Please log in or create an account"
       redirect_to(:action => :login)
     else
+      @user = User.find_by_id(session[:user_id])
       @new_items = Room.find_by_sql("SELECT * from rooms ORDER BY \"borrowedTimes\" DESC LIMIT 6")
     end
   end
@@ -19,10 +20,12 @@ class HomeController < ApplicationController
     email = params[:email]
     password = params[:password]
 
-    user = User.find_by_email(email)
-    if !user.nil?
-      if user.password_valid?(password)
-        session[:user_id] = user.id
+    @user = User.find_by_email(email)
+    if !@user.nil?
+      if @user.password_valid?(password)
+        session[:user_id] = @user.id
+        @user.first_login = 0
+        @user.save
         redirect_to(:action => :index)
       else
         flash[:error] = "Invalid Username or Password"
@@ -39,6 +42,7 @@ class HomeController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     @user.username = params[:username]
+    @user.first_login = 1
 
     if !@user.valid?
       render(:action => :login)
