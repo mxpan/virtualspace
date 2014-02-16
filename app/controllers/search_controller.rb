@@ -4,6 +4,8 @@ class SearchController < ApplicationController
        		flash[:error] = "Please log in or create an account"
       		redirect_to(:controller => :home, :action => :login)
     	end
+
+    	@query = params[:search]
   	end
 
 
@@ -35,7 +37,6 @@ class SearchController < ApplicationController
 		end
 
 		render :partial => "find_objects"
-
 
   	end
 end

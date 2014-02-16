@@ -1,9 +1,24 @@
 <h2>Search</h2>
-<input id="searchForm" type="text">
+<input id="searchForm" type="text" <% if !@query.nil? %>value=<%= @query %><% end %>>
 <br>
 <div id="found_objects">
 </div>
 
 <script type="text/javascript">
 	new Searcher("find_objects", "searchForm", "found_objects");
+
+	$(document).ready(function(){
+		// form was prepopulated and should fire off a search
+		if ( $("#searchForm").val() != "" ){
+			$.ajax({
+				url: "find_objects",
+				type: "GET",
+				data: {search: $("#searchForm").val()},
+				success: function(msg) {
+					console.log(msg);
+					$("#found_objects").html(msg);
+				}
+			});
+		}
+	});
 </script>
