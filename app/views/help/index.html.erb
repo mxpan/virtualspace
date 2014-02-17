@@ -1,2 +1,116 @@
-<h2>Help</h2>
-<p>Coming soon!</p>
+<h2> Help </h2>
+
+<p class = "text-centered"> 
+  Welcome to the Help page. Use it to learn more about each menu option and about VirtualSpace's other features. Click on each tab to reveal a dropdown section describing each part of the app in detail. If you want a quick overview of what the app can do, click on "View Tutorial" at the bottom of the page. 
+</p>
+
+
+<!-- Accordion Plugin code taken from getbootstrap website -->
+<div class="panel-group" id="accordion">
+
+  <!-- OPTION 1 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style = "color:blue">
+          Home
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse ">
+      <div class="panel-body text-centered">
+        The Home page contains thumbnails of the most recently-edited rooms in the VirtualSpace community. Each thumbnail links to the page for that room, where you can view information about the room and do one of two things:
+        <br>
+        1) In the case that it's your room, change the room's picture/description/tags by clicking the <b> Edit Room </b> button. You could also add a new item to the room by clicking the <b> Add Item to Room Button </b>.
+        <br>
+        2) In the case that the room is owned by someone else, add that room (and all its items and properties) to your collection by clicking the <b> Borrow </b> button; in other words, you can "borrow" the room (i.e. see and use it as inspiration) from another user.
+        <br>
+        <br>
+        At the very top of the Home Page are two buttons: <b> Search For More </b>, which takes you to the Search page, and <b> Go to Your Spaces </b>, which takes you to your spaces page. Both of these pages are described in greater detail in their respective sections on this page.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 2 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style = "color:blue">
+          Search
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body text-centered">
+        The Search page allows you to search for any of the rooms or items of other VirtualSpace users. As you type into the search bar, any rooms or items whose tags match (or contain) your query will appear on the screen. In other words, typing "re" into the bar will yield all of the results that typing "red" into the bar yields.
+        <br>
+        <br>
+        Any results from the search will appear as thumbnail images of each room/item found. Clicking on a thumbnail will lead you to that particular room's/item's page. Search is an easy way for you to find rooms or items that meet certain criteria.
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 3 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style = "color:blue">
+          Your Spaces
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body text-centered">
+        This page shows you all of the rooms (spaces) and items in your collection. Your rooms are shown under the <b> Rooms </b> header as a carousel of pictures through which you can navigate. To see which rooms are in your collection, you can do one of the following:
+        <li> Scroll through the carousel by horizontally swiping your finger across each picture </li>
+        <li> Click on the arrows that appear on the left and the right ends of each picture </li>
+        <br>
+        The following information applies for items as well, which show up beneath the <b> Items </b> header.
+        <br>
+        <br>
+        To actually add a room or an item to your collection, click on the  <b> Add Room/Item </b>. Each added room/item consists of four properties: 
+        <br>
+        1) A name
+        <br>
+        2) A picture         
+        <br>
+        3) A brief paragraph describing it     
+        <br>    
+        4) A set of keywords associated with it called <i> tags </i> 
+        <br>
+        Once you've entered the required information, you can add the new room/item to your collection and see it on your spaces page.
+
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 4 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style = "color:blue">
+          Settings
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body text-centered">
+        On this page, you'll be able to make changes to your personal account information. The empty text field underneath the <b> Username </b> header allows you to change your username. To change your password, simply click on <b> I want to change my password</b> button and enter your new password in the text field that appears under <b> New Password </b>. In the case you end up deciding <i> not </i> to change your password, just click the <b> Cancel Password Change </b> button to have the new password text field removed. If you make any changes to either your username or your password, click on the <b> Save Changes </b> button to officially update that information.
+        <br>
+        <br>
+        In the (very unfortunate) case that you want to stop using VirtualSpace, click on the <b> Delete my account </b> link at the bottom of the page.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button centralizing code taken from the first answer to the following StackOverflow post: http://stackoverflow.com/questions/7940769/how-to-center-a-width-unknown-button-in-a-bootstraps-span -->
+<div class="row">
+  <div class="span6" style="text-align:center">
+    <button type = "button" class = "btn btn-primary" data-dismiss = "modal" onclick = "startTutorial()";> 
+      View Tutorial
+    </button> 
+  </div>
+</div>
+
