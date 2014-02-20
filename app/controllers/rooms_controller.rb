@@ -88,7 +88,7 @@ class RoomsController < ApplicationController
 			if !@room.nil?
 				@room.destroy
 				flash[:notice] = "Room deleted"
-				redirect_to :controller => "spaces"
+				redirect_to :controller => "spaces", :action => "index", :id => session[:user_id]
 			end
 		end
 	end
