@@ -45,8 +45,10 @@
         </p></center>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Borrow</button>
-        <button type="button" class="btn btn-primary" onClick="window.location='/rooms/index/<%= i.id %>'">More Info</button>
+        <% if session[:user_id] != i.user_id %>
+        <button type = "Button" class = "btn btn-default" onclick = "window.location.href = '/rooms/post_borrow?room=<%= i.id %>'" id="borrowButton">Borrow</button>
+        <% end %>
+        <button type="button" class="btn btn-primary" onClick="window.location='/rooms/index/<%= i.id %>'">Go to Room Page</button>
       </div>
     </div>
   </div>
