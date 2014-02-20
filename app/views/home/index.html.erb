@@ -17,12 +17,40 @@
 <div class="row">
   <% @new_items.each do |i| %>
   <div class="col-xs-6">
-      <a href="/rooms/index/<%= i.id %>">
+      <!-- <a href="/rooms/index/<%= i.id %>"> -->
+      <a href="#moreInfoModal<%= i.id %>" data-toggle="modal">
           <div class="thumbnailContainer">
             <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
           </div>
       </a>
   </div>
+
+  <div class="modal fade" id="moreInfoModal<%= i.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><%= i.name %></h4>
+      </div>
+      <div class="modal-body">
+        <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+        <center><p>Owned by: 
+        <a href="/spaces/index/<%= i.user_id %>">
+        <% if session[:user_id] == i.user_id %>
+        you
+        <% else %>
+        <%= i.user.username %>
+        <% end %>
+        </a>
+        </p></center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Borrow</button>
+        <button type="button" class="btn btn-primary" onClick="window.location='/rooms/index/<%= i.id %>'">More Info</button>
+      </div>
+    </div>
+  </div>
+</div>
   <% end %>
 
 
@@ -315,6 +343,7 @@
   <script type = "text/javascript">
     $(window).load(function(){
         $('#modal0').modal('show');
+        $('#moreInfoModal').modal('hide');
     });
 
     function startTutorial(){
