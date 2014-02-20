@@ -20,7 +20,9 @@
       <!-- <a href="/rooms/index/<%= i.id %>"> -->
       <a href="#moreInfoModal<%= i.id %>" data-toggle="modal">
           <div class="thumbnailContainer">
-            <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+            <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive <% if i.user_id == session[:user_id] %>yourObject<% end %>">
+            <%= i.user_id %>
+            <%= session[:user_id] %>
           </div>
       </a>
   </div>
