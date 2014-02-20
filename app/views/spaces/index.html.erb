@@ -3,7 +3,7 @@
 		<h2><%= @user.username %>'s Spaces</h2>
 	</div>
 	<% if session[:user_id] == @user.id %>
-	<button type="button" class="btn btn-lg" onclick="window.location.href='/spaces/add'">Add Room/Item</button>
+	<button type="button" class="btn btn-lg" onclick="window.location.href='/spaces/add/<%= @user.id %>'">Add Room/Item</button>
 	<% end %>
 </div>
 
