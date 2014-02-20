@@ -18,6 +18,7 @@ class HomeController < ApplicationController
 
   def post_login
     email = params[:email]
+    email = email.downcase
     password = params[:password]
 
     @user = User.find_by_email(email)
@@ -37,7 +38,7 @@ class HomeController < ApplicationController
 
   def post_create_account
     @user = User.new
-    @user.email = params[:email]
+    @user.email = params[:email].downcase
     @user.password = params[:password]
     @user.username = params[:username]
     @user.first_login = 1

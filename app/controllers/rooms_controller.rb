@@ -148,6 +148,15 @@ class RoomsController < ApplicationController
 
 		borrowedRoom.save
 
+		desiredRoom.tags.each do |tag|
+			newTag = Tag.new
+			newTag.name = tag.name
+
+			newTag.save
+
+			borrowedRoom.tags << newTag
+		end
+
 		desiredRoom.items.each do |item|
 			borrowedItem = Item.new
 			borrowedItem.user_id = session[:user_id]
@@ -158,6 +167,15 @@ class RoomsController < ApplicationController
 			borrowedItem.borrowedTimes = 0
 
 			borrowedItem.save
+
+			item.tags.each do |tag|
+				newTag = Tag.new
+				newTag.name = tag.name
+
+				newTag.save
+
+				borrowedItem.tags << newTag
+			end
 		end
 
 		flash[:notice] = borrowedRoom.name+" was added to your spaces"

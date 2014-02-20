@@ -1,8 +1,8 @@
 class LoadData < ActiveRecord::Migration
   def up
     #Create user
-    user = User.new(:email => "a", :username => "a")
-    user.password = "a"
+    user = User.new(:email => "mxpan@stanford.edu", :username => "Michelle")
+    user.password = "michelle"
     user.first_login = 1
     user.save
 
@@ -10,11 +10,50 @@ class LoadData < ActiveRecord::Migration
   	room = Room.new(:user_id => user.id, :name => "Living Room", :description => "modern multi-colored living room", :imageURL => "room01.jpg", :borrowedTimes => 5)
   	room.save
 
-  	room = Room.new(:user_id => user.id, :name => "Living Room 2", :description => "nothing is better than gazing at the sea in the morning", :imageURL => "room02.jpg", :borrowedTimes => 4)
+    tag = Tag.new(:name => "color")
+    tag.save
+    room.tags << tag
+
+  	room = Room.new(:user_id => user.id, :name => "Second Living Room", :description => "nothing is better than gazing at the sea in the morning", :imageURL => "room02.jpg", :borrowedTimes => 4)
   	room.save
+
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table", :imageURL => "item01.jpg", :borrowedTimes => 3)
+    item.save
+
+    tag = Tag.new(:name => "green")
+    tag.save
+    item.tags << tag
+
+    tag = Tag.new(:name => "color")
+    tag.save
+    item.tags << tag
+
+    user = User.new(:email => "mpick@stanford.edu", :username => "Matthew")
+    user.password = "matthew"
+    user.first_login = 1
+    user.save
 
   	room = Room.new(:user_id => user.id, :name => "Bedroom", :description => "simple white yet colorful bed", :imageURL => "room03.jpg", :borrowedTimes => 3)
   	room.save
+
+    tag = Tag.new(:name => "white")
+    tag.save
+    room.tags << tag
+
+    tag = Tag.new(:name => "color")
+    tag.save
+    item.tags << tag
+
+    tag = Tag.new(:name => "bedroom")
+    tag.save
+    room.tags << tag
+
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "crib", :description => "new crib for my new crib", :imageURL => "item03.jpg", :borrowedTimes => 3)
+    item.save
+
+    tag = Tag.new(:name => "crib")
+    tag.save
+    item.tags << tag
 
   	room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "check out my expensive dining room set", :imageURL => "room04.jpg", :borrowedTimes => 2)
   	room.save
@@ -22,20 +61,30 @@ class LoadData < ActiveRecord::Migration
   	room = Room.new(:user_id => user.id, :name => "Modern Bedroom", :description => "just as the name suggests", :imageURL => "room05.jpg", :borrowedTimes => 4)
   	room.save
 
+    user = User.new(:email => "topeo@stanford.edu", :username => "Tope")
+    user.password = "tope"
+    user.first_login = 1
+    user.save
+
   	room = Room.new(:user_id => user.id, :name => "Empty Living Room", :description => "nothing but a red couch", :imageURL => "room06.jpg", :borrowedTimes => 1)
   	room.save
-
-    
+ 
     tag = Tag.new(:name => "red")
     tag.save
     room.tags << tag
 
-    item = Item.new(:user_id => user.id, :room_id => room, :name => "crib", :description => "new crib for my new crib", :imageURL => "item03.jpg", :borrowedTimes => 3)
-    item.save
+    tag = Tag.new(:name => "living room")
+    tag.save
+    room.tags << tag
 
-    tag = Tag.new(:name => "crib")
+    tag = Tag.new(:name => "open")
     tag.save
     item.tags << tag
+
+    user = User.new(:email => "test@stanford.edu", :username => "Jon")
+    user.password = "test"
+    user.first_login = 1
+    user.save
   end
 
   def down
