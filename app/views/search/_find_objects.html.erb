@@ -23,3 +23,6 @@
 	</div>
 <% end %>
 </div>
+<% if @foundRooms.count == 0 && @foundItems.count == 0 && @searchString != "" %>
+	<h4 class="text-centered"><b>No Rooms or Items Found</b></h4>
+<% end %>
