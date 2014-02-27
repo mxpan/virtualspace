@@ -46,7 +46,7 @@
       </div>
       <div class="modal-footer">
         <% if session[:user_id] != i.user_id %>
-        <button type = "Button" class = "btn btn-default" onclick = "window.location.href = '/rooms/post_borrow?room=<%= i.id %>'" id="borrowButton">Borrow</button>
+        <button type = "Button" class = "btn btn-default" onclick = "window.location.href = '/rooms/post_borrow?room=<%= i.id %>'" id="borrowButton">Copy Room</button>
         <% end %>
         <button type="button" class="btn btn-primary" onClick="window.location='/rooms/index/<%= i.id %>'">Go to Room Page</button>
       </div>
@@ -405,7 +405,7 @@
     </div>
     <div class = "modal-body text-centered">
         <img src = "/images/tutorialImages/pg14.PNG"/>
-        <p> When you click on one of the thumbnails, you'll have the option of either viewing that specific room's page or, if the room isn't yours, "borrowing" the room (i.e. adding the room and its items to your collection). </p>
+        <p> When you click on one of the thumbnails, you'll have the option of either viewing that specific room's page or, if the room isn't yours, copying the room and its items into your spaces. </p>
 
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
