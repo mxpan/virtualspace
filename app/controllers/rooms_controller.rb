@@ -130,6 +130,9 @@ class RoomsController < ApplicationController
 	def post_borrow
 		roomID = params[:room]
 		desiredRoom = Room.find_by_id(roomID)
+		desiredRoom.borrowedTimes = desiredRoom.borrowedTimes+1
+		desiredRoom.save
+
 		borrowedRoom = Room.new
 		borrowedRoom.name = desiredRoom.name
 		borrowedRoom.description = desiredRoom.description

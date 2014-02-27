@@ -133,6 +133,8 @@ class ItemsController < ApplicationController
 	def post_borrow
 		roomID = params[:room]
 		item = Item.find_by_id(params[:item])
+		item.borrowedTimes = item.borrowedTimes+1
+		item.save
 
 		borrowedItem = Item.new
 		borrowedItem.user_id = session[:user_id]

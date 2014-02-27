@@ -7,7 +7,9 @@ you
 <%= @room.user.username %>
 <% end %>
 </a>
-</p></center>
+</p>
+<p class="redText"><b>Copied <%= @room.borrowedTimes %> Time<% if @room.borrowedTimes != 1 %>s<% end %></b></p>
+</center>
 
 <% if session[:user_id] ==  @room.user_id%>
 <center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
