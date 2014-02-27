@@ -1,5 +1,6 @@
 <h2>Search</h2>
-<input id="searchForm" type="text" placeholder="Find rooms and items by name and tags" <% if !@query.nil? %>value=<%= @query %><% end %>>
+
+<input id="searchForm" type="text" placeholder="Find rooms and items by name and tags" <% if !@query.nil? %>value='<%= @query %>'<% end %>>
 <br>
 <div id="found_objects">
 </div>
