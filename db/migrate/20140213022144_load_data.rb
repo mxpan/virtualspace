@@ -86,7 +86,7 @@ class LoadData < ActiveRecord::Migration
     user.first_login = 0
     user.save
 
-    room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "mdoern kitchen courtesy of the good folks at Ikea", :imageURL => "room09.jpg", :borrowedTimes => 2)
+    room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "mdoern kitchen courtesy of the good folks at Ikea", :imageURL => File.open("#{Rails.root}/public/images/room09.jpg"), :borrowedTimes => 2)
     room.save
 
     tag = Tag.new(:name => "open")
@@ -97,7 +97,7 @@ class LoadData < ActiveRecord::Migration
     tag.save
     room.tags << tag
 
-    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "Thomas the Tank Bed", :description => "gift from Mommy", :imageURL => "item02.jpg", :borrowedTimes => 3)
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "Thomas the Tank Bed", :description => "gift from Mommy", :imageURL => File.open("#{Rails.root}/public/images/item02.jpg"), :borrowedTimes => 3)
     item.save
 
     tag = Tag.new(:name => "classic")
