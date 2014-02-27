@@ -12,7 +12,7 @@ you
 <% if session[:user_id] ==  @item.user_id%>
 	<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/items/edit/<%= @item.id %>'">Edit Item</button></center>
 <% else %>
-	<center><button type = "Button" class = "btn btn-sm" onclick = "borrowClicked()" id="borrowButton">Borrow</button></center>
+	<center><button type = "Button" class = "btn btn-sm" onclick = "borrowClicked()" id="borrowButton">Copy Item</button></center>
 <% end %>
 <div id="roomSelect">
 	<br><p>Select a room in which to place the item.</p>
