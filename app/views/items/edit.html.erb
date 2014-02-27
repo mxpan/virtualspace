@@ -5,7 +5,7 @@
 	<%= label_tag(:name, "Item Name") %>
 	<%= text_field_tag :name, @item.name, :placeholder => "No name", :class => "form-control" %>
 	<br/>
-	<img src="/images/<%= @item.imageURL %>"/>
+	<img src="<%= @item.imageURL %>"/>
 	<br/>
 	<%= label_tag(:imageURL, "Upload new Image") %>
 	<%= file_field_tag :imageURL, :class => "form-control" %>

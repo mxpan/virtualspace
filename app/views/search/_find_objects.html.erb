@@ -6,7 +6,7 @@
 <% @foundRooms.each do |photo| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/rooms/index/<%= photo.id %>">
-			<img class="thumbnail img-responsive" src="/images/<%= photo.imageURL %>" alt="" />
+			<img class="thumbnail img-responsive" src="<%= photo.imageURL %>" alt="" />
 		</a>
 	</div>
 <% end %>
@@ -18,7 +18,7 @@
 <% @foundItems.each do |photo| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/items/index/<%= photo.id %>">
-			<img class="thumbnail img-responsive" src="/images/<%= photo.imageURL %>" alt="" />
+			<img class="thumbnail img-responsive" src="<%= photo.imageURL %>" alt="" />
 		</a>
 	</div>
 <% end %>

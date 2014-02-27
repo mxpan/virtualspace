@@ -3,4 +3,6 @@ class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :room
   has_and_belongs_to_many :tags
+
+  mount_uploader :imageURL, ImageUploadUploader
 end

@@ -4,7 +4,7 @@
 <% @rooms.each do |i| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/rooms/index/<%= i.id %>">
-		     <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive">
+		     <img src="<%= i.imageURL %>" class="thumbnail img-responsive">
 		</a>
 	</div>
 <% end %>

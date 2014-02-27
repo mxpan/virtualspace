@@ -6,10 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'carrierwave'
 gem 'jquery-rails'
-
 gem 'bootstrap-sass'
+gem 'mini_magick'
 
 group :development do
   gem 'rails_layout'
