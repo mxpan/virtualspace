@@ -3,7 +3,7 @@ class LoadData < ActiveRecord::Migration
     #Create user
     user = User.new(:email => "mxpan@stanford.edu", :username => "Michelle")
     user.password = "michelle"
-    user.first_login = 1
+    user.first_login = 0
     user.save
 
     uploader = ImageUploadUploader.new
@@ -34,7 +34,7 @@ class LoadData < ActiveRecord::Migration
 
     user = User.new(:email => "mpick@stanford.edu", :username => "Matthew")
     user.password = "matthew"
-    user.first_login = 1
+    user.first_login = 0
     user.save
 
   	room = Room.new(:user_id => user.id, :name => "Bedroom", :description => "simple white yet colorful bed", :imageURL => File.open("#{Rails.root}/public/images/room03.jpg"), :borrowedTimes => 3)
@@ -43,10 +43,6 @@ class LoadData < ActiveRecord::Migration
     tag = Tag.new(:name => "white")
     tag.save
     room.tags << tag
-
-    tag = Tag.new(:name => "color")
-    tag.save
-    item.tags << tag
 
     tag = Tag.new(:name => "bedroom")
     tag.save
@@ -67,7 +63,7 @@ class LoadData < ActiveRecord::Migration
 
     user = User.new(:email => "topeo@stanford.edu", :username => "Tope")
     user.password = "tope"
-    user.first_login = 1
+    user.first_login = 0
     user.save
 
   	room = Room.new(:user_id => user.id, :name => "Empty Living Room", :description => "nothing but a red couch", :imageURL => File.open("#{Rails.root}/public/images/room06.jpg"), :borrowedTimes => 1)
@@ -85,10 +81,32 @@ class LoadData < ActiveRecord::Migration
     tag.save
     item.tags << tag
 
-    user = User.new(:email => "test@stanford.edu", :username => "Jon")
+    user = User.new(:email => "test", :username => "Jon")
     user.password = "test"
-    user.first_login = 1
+    user.first_login = 0
     user.save
+
+    room = Room.new(:user_id => user.id, :name => "Kitchen", :description => "mdoern kitchen courtesy of the good folks at Ikea", :imageURL => "room09.jpg", :borrowedTimes => 2)
+    room.save
+
+    tag = Tag.new(:name => "open")
+    tag.save
+    room.tags << tag
+
+    tag = Tag.new(:name => "modern")
+    tag.save
+    room.tags << tag
+
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "Thomas the Tank Bed", :description => "gift from Mommy", :imageURL => "item02.jpg", :borrowedTimes => 3)
+    item.save
+
+    tag = Tag.new(:name => "classic")
+    tag.save
+    item.tags << tag
+
+    tag = Tag.new(:name => "bed")
+    tag.save
+    item.tags << tag
   end
 
   def down

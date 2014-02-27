@@ -6,7 +6,11 @@
 <% @foundRooms.each do |photo| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/rooms/index/<%= photo.id %>">
+<<<<<<< HEAD
 			<img class="thumbnail img-responsive" src="<%= photo.imageURL %>" alt="" />
+=======
+			<img class="thumbnail img-responsive <% if photo.user_id == session[:user_id] %>yourObject<% end %>" src="/images/<%= photo.imageURL %>" alt="" />
+>>>>>>> 051b376537f42e6db76b679cc21830576be71b7a
 		</a>
 	</div>
 <% end %>
@@ -18,8 +22,15 @@
 <% @foundItems.each do |photo| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/items/index/<%= photo.id %>">
+<<<<<<< HEAD
 			<img class="thumbnail img-responsive" src="<%= photo.imageURL %>" alt="" />
+=======
+			<img class="thumbnail img-responsive <% if photo.user_id == session[:user_id] %>yourObject<% end %>" src="/images/<%= photo.imageURL %>" alt="" />
+>>>>>>> 051b376537f42e6db76b679cc21830576be71b7a
 		</a>
 	</div>
 <% end %>
 </div>
+<% if @foundRooms.count == 0 && @foundItems.count == 0 && @searchString != "" %>
+	<h4 class="text-centered"><b>No Rooms or Items Found</b></h4>
+<% end %>
