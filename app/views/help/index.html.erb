@@ -1,8 +1,20 @@
 <h2> Help </h2>
 
-<p class = "text-centered"> 
-    Tap on a tab to reveal a dropdown section describing each part of the app in detail. If you want a quick overview of what the app can do, touch the"View Tutorial" button at the bottom of the page. 
+<p class = "text-centered text-justified"> 
+    Touch the "View Tutorial" button for a quick overview of the app.
+    Touch any of the 4 dropdown tabs to learn about a spcific page. 
 </p>
+
+<!-- Button centralizing code taken from the first answer to the following StackOverflow post: http://stackoverflow.com/questions/7940769/how-to-center-a-width-unknown-button-in-a-bootstraps-span -->
+<div class="row">
+  <div class="span6" style="text-align:center">
+    <button type = "button" class = "btn btn-primary" data-dismiss = "modal" onclick = "startTutorial()";> 
+      View Tutorial
+    </button> 
+  </div>
+</div>
+
+<br>
 
 <!-- Accordion Plugin code taken from getbootstrap website -->
 <div class="panel-group" id="accordion">
@@ -20,14 +32,18 @@
       </div>
     <div id="collapseOne" class="panel-collapse collapse ">
       <div class="panel-body text-centered text-justified">
-        The Home page contains thumbnails of the most recently-edited rooms in the VirtualSpace community. Each thumbnail links to the page for that room, where you can view information about the room and do one of two things:
-        <br>
-        1) In the case that it's your room, change the room's picture/description/tags by clicking the <b> Edit Room </b> button. You could also add a new item to the room by clicking the <b> Add Item to Room Button </b>.
-        <br>
-        2) In the case that the room is owned by someone else, add that room (and all its items and properties) to your collection by clicking the <b> Copy Room </b> button which copies the room and its items into your spaces to use as inspiration.
+        The Home page has thumbnails of the most recently updated rooms on VirtualSpace. Tapping on a thumbnail brings up a modal that lets you:
         <br>
         <br>
-        At the very top of the Home Page are two buttons: <b> Search For More </b>, which takes you to the Search page, and <b> Go to Your Spaces </b>, which takes you to your spaces page. Both of these pages are described in greater detail in their respective sections on this page.
+        <ul>
+          <li> 
+            Edit parts of the room by touching the <b> Edit Room </b> button. You could also add a new item to the room by clicking the <b> Add Item to Room </b> button.
+          </li>
+          <br>
+          <li> 
+            In the case that the room is owned by someone else, add that room (and all its items and properties) to your collection by clicking the <b> Copy Room </b> button which copies the room and its items into your spaces to use as inspiration.
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -66,25 +82,23 @@
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body text-centered text-justified">
-        This page shows you all of the rooms (spaces) and items in your collection. Your rooms are shown under the <b> Rooms </b> header as a carousel of pictures through which you can navigate. To see which rooms are in your collection, you can do one of the following:
-        <li> Scroll through the carousel by horizontally swiping your finger across each picture </li>
-        <li> Click on the arrows that appear on the left and the right ends of each picture </li>
-        <br>
-        The above information applies for items as well, which show up beneath the <b> Items </b> header.
+        This page shows you all of the rooms (spaces) and items in your collection. Your rooms are shown under the <b> Rooms </b> and <b> Items </b> headers as carousels of pictures that you can browse by:
         <br>
         <br>
-        To actually add a room or an item to your collection, click on the  <b> Add Room/Item </b>. Each added room/item consists of four properties: 
+        <ul>
+          <li> Swiping your finger across each picture </li>
+          <br>
+          <li> Touching the arrows that appear on the left and the right ends of each picture </li>
+          <br>
+        </ul>
+        To actually add a room or an item to your collection, press the  <b> Add Room/Item </b> button. Each room/item has four properties: 
         <br>
-        1) A name
-        <br>
-        2) A picture         
-        <br>
-        3) A brief paragraph describing it     
-        <br>    
-        4) A set of keywords associated with it called <i> tags </i> 
-        <br>
-        Once you've entered the required information, you can add the new room/item to your collection and see it on your spaces page.
-
+          <ol>
+            <li> A name </li>
+            <li> A picture </li>       
+            <li> A brief paragraph describing it </li>     
+            <li> A set of keywords associated with it called <i> tags </i> </li> 
+          </ol>
       </div>
     </div>
   </div>
@@ -102,24 +116,16 @@
     </div>
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body text-centered text-justified">
-        On this page, you'll be able to make changes to your personal account information. The empty text field underneath the <b> Username </b> header allows you to change your username. To change your password, simply click on <b> I want to change my password</b> button and enter your new password in the text field that appears under <b> New Password </b>. In the case you end up deciding <i> not </i> to change your password, just click the <b> Cancel Password Change </b> button to have the new password text field removed. If you make any changes to either your username or your password, click on the <b> Save Changes </b> button to officially update that information.
+        On this page, you'll be able to change your personal account information. The empty text field beneath the <b> Username </b> header allows you to change your username. To change your password, press the <b> I want to change my password</b> button and enter your new password in the <b> New Password </b> text field. If you decide <i> not </i> to change your password, press the <b> Cancel Password Change </b> button to remove the new password text field. Press the <b> Save Changes </b> button to officially update that information.
         <br>
         <br>
-        In the (very unfortunate) case that you want to stop using VirtualSpace, click on the <b> Delete my account </b> link at the bottom of the page.
+        In the (very unfortunate) case you want to stop using VirtualSpace, tap the <b> Delete my account </b> link at the bottom of the page.
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- Button centralizing code taken from the first answer to the following StackOverflow post: http://stackoverflow.com/questions/7940769/how-to-center-a-width-unknown-button-in-a-bootstraps-span -->
-<div class="row">
-  <div class="span6" style="text-align:center">
-    <button type = "button" class = "btn btn-primary" data-dismiss = "modal" onclick = "startTutorial()";> 
-      View Tutorial
-    </button> 
-  </div>
-</div>
 
 <!-- PAGE 1 OF TUTORIAL -->
 <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
