@@ -17,6 +17,7 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
     "images"
   end
 
+  process :resize_to_fill => [300, 300]
   process :right_orientation
   def right_orientation
     manipulate! do |img|
