@@ -52,11 +52,7 @@ class RoomsController < ApplicationController
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]
 		  		if (params[:imageURL])
-		  			uploaded_io = params[:imageURL]
-					File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
-			    			file.write(uploaded_io.read)
-			    		end
-		  			@room.imageURL = uploaded_io.original_filename
+		  			@room.imageURL = params[:imageURL]
 		  		end
 		  		@room.tags.clear
 		  		if params[:tags] != ""
@@ -106,11 +102,6 @@ class RoomsController < ApplicationController
 				flash[:room_error] = "You must enter a name"
 				redirect_to :controller => "spaces", :action => "add"
 			else
-				uploaded_io = params[:imageURL]
-				File.open(Rails.root.join('public', 'images', uploaded_io.original_filename), 'wb') do |file|
-		    			file.write(uploaded_io.read)
-		  		end
-
 		  		if params[:tags] != ""
 		  			# split tag string using commas
 		  			tagsArr = params[:tags].split(',').map(&:strip)
@@ -128,7 +119,7 @@ class RoomsController < ApplicationController
 		  		@room.user_id = session[:user_id]
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]
-		  		@room.imageURL = uploaded_io.original_filename
+		  		@room.imageURL = params[:imageURL]
 		  		@room.borrowedTimes = 0
 		  		@room.save
 		  		redirect_to :action => "index", :id => @room.id
@@ -139,6 +130,9 @@ class RoomsController < ApplicationController
 	def post_borrow
 		roomID = params[:room]
 		desiredRoom = Room.find_by_id(roomID)
+		desiredRoom.borrowedTimes = desiredRoom.borrowedTimes+1
+		desiredRoom.save
+
 		borrowedRoom = Room.new
 		borrowedRoom.name = desiredRoom.name
 		borrowedRoom.description = desiredRoom.description

@@ -4,7 +4,11 @@
 <% @rooms.each do |i| %>
 	<div class="col-lg-2 col-sm-3 col-xs-4">
 		<a href="/rooms/index/<%= i.id %>">
+<<<<<<< HEAD
+		     <img src="<%= i.imageURL %>" class="thumbnail img-responsive">
+=======
 		     <img src="/images/<%= i.imageURL %>" class="thumbnail img-responsive <% if i.user_id == session[:user_id] %>yourObject<% end %>">
+>>>>>>> 051b376537f42e6db76b679cc21830576be71b7a
 		</a>
 	</div>
 <% end %>

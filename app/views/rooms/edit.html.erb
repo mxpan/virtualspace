@@ -5,7 +5,7 @@
 	<%= label_tag(:name, "Room Name") %>
 	<%= text_field_tag :name, @room.name, :placeholder => "No name", :class => "form-control" %>
 	<br/>
-	<img src="/images/<%= @room.imageURL %>"/>
+	<img src="<%= @room.imageURL %>"/>
 	<br/>
 	<%= label_tag(:imageURL, "Upload new Image") %>
 	<%= file_field_tag :imageURL, :class => "form-control" %>
