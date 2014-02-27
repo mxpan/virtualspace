@@ -12,7 +12,7 @@
 	<br/>
 	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
 	<br/>
-	<%= file_field_tag :imageURL, :class => "form-control", :capture => "camera", :accept => "image/*" %>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
   	<br/>
   	<%= submit_tag "Add Room", :html => { :class => "btn btn-lg" } %>
 <% end %>
@@ -26,7 +26,7 @@
 	<br/><br/>
 	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
 	<br/>
-	<%= file_field_tag :imageURL, :class => "form-control", :capture => "camera", :accept => "image/*" %>
+	<%= file_field_tag :imageURL, :class => "form-control" %>
   	<br/>
   	<%= submit_tag "Add Item", :html => { :class => "btn btn-lg" } %>
 <% end %>
