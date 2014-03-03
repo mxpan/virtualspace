@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
 			@room = Room.find_by_id(params[:id])
 			if @room.nil?
 				flash[:error] = "Not a valid room"
-	  			redirect_to :action => "index", :controller => "spaces"
+	  			redirect_to :action => "index", :controller => "spaces", :id => session[:user_id]
 			else
 				@tags = @room.tags
 				@tagString = ""
@@ -47,7 +47,7 @@ class RoomsController < ApplicationController
 			@room = Room.find_by_id(params[:room_id])
 			if @room.nil?
 				flash[:error] = "Not a valid room"
-	  			redirect_to :action => "index", :controller => "spaces"
+	  			redirect_to :action => "index", :controller => "spaces", :id => session[:user_id]
 			else
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]

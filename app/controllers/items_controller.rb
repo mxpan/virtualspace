@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 			@item = Item.find_by_id(params[:id])
 			if @item.nil?
 				flash[:error] = "Not a valid item"
-	  			redirect_to :action => "index", :controller => "spaces"
+	  			redirect_to :action => "index", :controller => "spaces", :id => session[:user_id]
 			else
 				@user = User.find_by_id(session[:user_id])
 				@tags = @item.tags
@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
 			@item = Item.find_by_id(params[:item_id])
 			if @item.nil?
 				flash[:error] = "Not a valid item"
-	  			redirect_to :action => "index", :controller => "spaces"
+	  			redirect_to :action => "index", :controller => "spaces", :id => session[:user_id]
 			else
 		  		@item.name = params[:name]
 		  		@item.description = params[:description]
@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
 			if !@item.nil?
 				@item.destroy
 				flash[:notice] = "Item deleted"
-				redirect_to :controller => "spaces"
+				redirect_to :controller => "spaces", :action => "index", :id => session[:user_id]
 			end
 		end
 	end
