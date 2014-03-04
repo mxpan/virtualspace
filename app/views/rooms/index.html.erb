@@ -14,7 +14,16 @@ you
 <% if session[:user_id] ==  @room.user_id%>
 <center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/edit/<%= @room.id %>'">Edit Room</button></center>
 <% else %>
-	<center><button type = "Button" class = "btn btn-sm" onclick = "window.location.href = '/rooms/post_borrow?room=<%= @room.id %>'" id="borrowButton">Copy Room</button></center>
+	<center>
+		<button type = "Button" class = "btn btn-sm" onclick = "copy()" id="borrowButton">Copy Room
+		</button>
+		<script type="text/javascript"> 
+            function copy(){
+              ga("send", "event", "button", "click");
+              window.location.href = '/rooms/post_borrow?room=<%= @room.id %>';
+            }
+        </script>
+	</center>
 <% end %><br/>
 
 <img src="<%= @room.imageURL %>"/>
@@ -85,4 +94,15 @@ you
 			$("#addItemDiv").hide("medium");
 		}
 	}
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48620223-1', 'virtualspace.herokuapp.com');
+  ga('send', 'pageview');
+
 </script>
