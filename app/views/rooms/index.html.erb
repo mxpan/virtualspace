@@ -19,7 +19,7 @@ you
 		</button>
 		<script type="text/javascript"> 
             function copy(){
-              ga("send", "event", "button", "click");
+              ga("send", "event", "copyRoomButton", "click");
               window.location.href = '/rooms/post_borrow?room=<%= @room.id %>';
             }
         </script>

@@ -83,7 +83,7 @@ None
 	}
 
 	function confirmClicked(){
-		ga("send", "event", "button", "click");
+		ga("send", "event", "copyItemButton", "click");
 		newURL = "/items/post_borrow?room="+$("#borrowRoomSelector").val()+"&item="+$("#itemID").val();
 		window.location.href = newURL;
 	}
