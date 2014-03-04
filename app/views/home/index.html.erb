@@ -53,7 +53,7 @@
         <button type = "Button" class = "btn btn-default" onclick = "copy()" id="borrowButton">Copy Room</button>
           <script type="text/javascript"> 
             function copy(){
-              ga("send", "event", "copyHomeButton", "click");
+              ga("send", "event", "copyButton", "click");
               window.location.href = '/rooms/post_borrow?room=<%= i.id %>';
             }
           </script>
