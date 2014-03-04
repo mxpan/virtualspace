@@ -6,19 +6,20 @@
 <br/><br/>
 
 <%= form_tag('/rooms/create', multipart: true, id: 'addRoomForm') do %>
-	<%= text_field_tag :name, nil, :placeholder => "Room Name", :class => "form-control" %>
+	<%= text_field_tag :name, nil, :placeholder => "Room Name (required)", :class => "form-control" %>
 	<br/>
 	<%= text_area_tag(:description, nil, :placeholder => "Description", :class => "form-control", size: "24x6") %>
 	<br/>
 	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
 	<br/>
+	<p>Room Image (required):</p>
 	<%= file_field_tag :imageURL, :class => "form-control" %>
   	<br/>
   	<%= submit_tag "Add Room", :html => { :class => "btn btn-lg" } %>
 <% end %>
 
 <%= form_tag('/items/create', multipart: true, id: 'addItemForm') do %>
-	<%= text_field_tag :name, nil, :placeholder => "Item Name", :class => "form-control" %>
+	<%= text_field_tag :name, nil, :placeholder => "Item Name (required)", :class => "form-control" %>
 	<br/>
 	<%= text_area_tag(:description, nil, :placeholder => "Description", :class => "form-control", size: "24x6") %>
 	<br/>
@@ -26,6 +27,7 @@
 	<br/><br/>
 	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
 	<br/>
+	<p>Item Image (required):</p>
 	<%= file_field_tag :imageURL, :class => "form-control" %>
   	<br/>
   	<%= submit_tag "Add Item", :html => { :class => "btn btn-lg" } %>

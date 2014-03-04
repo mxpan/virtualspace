@@ -20,4 +20,5 @@
 <% end %>
 
 <br/>
-<center>Not feelin' this style? <a href="/rooms/delete/<%= @room.id %>">Delete this room</a>!</center>
+<center>Not feelin' this style? <%= link_to 'Delete this room', url_for(action: :delete, id: @room.id), data: {confirm: "Are you sure you want to delete this room?"} %>!</center>
+

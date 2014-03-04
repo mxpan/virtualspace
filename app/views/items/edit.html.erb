@@ -22,4 +22,4 @@
 <% end %>
 
 <br/>
-<center>Not feelin' this piece? <a href="/items/delete/<%= @item.id %>">Delete this item</a>!</center>
+<center>Not feelin' this piece? <%= link_to 'Delete this item', url_for(action: :delete, id: @item.id), data: {confirm: "Are you sure you want to delete this item?"} %>!</center>

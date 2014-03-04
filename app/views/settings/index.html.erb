@@ -11,7 +11,9 @@
 <br>
 <center><button type="button" id="redButton" class="btn btn-sm" onclick="saveChanges()">Save Changes</button></center>
 <br><br><br>
-<center>Say it ain't so!  But if you really must leave VirtualSpace...<a href="/settings/post_delete">Delete my account</a></center>
+<center>Say it ain't so!  But if you really must leave VirtualSpace... <%= link_to 'Delete my account', url_for(action: :post_delete), data: {confirm: "Are you sure you want to delete your account?"} %></center>
+
+
 
 <script type="text/javascript">
 
