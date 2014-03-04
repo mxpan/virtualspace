@@ -45,7 +45,7 @@
         <% end %>
         </a>
         </p>
-        <% if session[:showCopies] %><p class="redText"><b>Copied <%= i.borrowedTimes %> Times</b></p><% end %>
+        <% if session[:showCopies] %><p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p><% end %>
       </center>
       </div>
       <div class="modal-footer">
