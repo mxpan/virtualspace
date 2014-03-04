@@ -5,8 +5,8 @@ class SpacesController < ApplicationController
 	      	redirect_to(:controller => :home, :action => :login)
 	    else
 			@user = User.find_by_id(params[:id])
-			@itemsArr = @user.items
-			@roomsArr = @user.rooms
+			@itemsArr = Item.where("user_id = ?", @user.id).order("updated_at DESC").limit(5)
+			@roomsArr = Room.where("user_id = ?", @user.id).order("updated_at DESC").limit(5)
 		end
 	end
 

@@ -8,7 +8,7 @@ you
 <% end %>
 </a>
 </p>
-<p class="redText"><b>Copied <%= @room.borrowedTimes %> Time<% if @room.borrowedTimes != 1 %>s<% end %></b></p>
+<% if session[:showCopies] %><p class="redText"><b>Copied <%= @room.borrowedTimes %> Time<% if @room.borrowedTimes != 1 %>s<% end %></b></p><% end %>
 </center>
 
 <% if session[:user_id] ==  @room.user_id%>
