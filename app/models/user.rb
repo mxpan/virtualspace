@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :items
 
   validates :email, :password_digest, :username, :presence => true
+  validates :email, :username, :uniqueness => true
 
 
   def password=(fullPassword)
