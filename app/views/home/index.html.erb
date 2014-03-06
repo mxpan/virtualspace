@@ -1,13 +1,13 @@
-<script>
+ <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-48620223-1', 'virtualspace.herokuapp.com');
+  ga('create', 'UA-48620223-1', {'cookieDomain': 'none'});
   ga('send', 'pageview');
 
-</script>
+ </script>
 
 <h2>What's Popular
   <p class="lead">See what other users have designed ordered by the last edited room.  Rooms surrounded by a dark red outline are rooms you already own in your spaces.</p>
@@ -32,7 +32,6 @@
       <a href="#moreInfoModal<%= i.id %>" data-toggle="modal">
           <div class="thumbnailContainer">
             <img src="<%= i.imageURL %>" class="thumbnail img-responsive <% if i.user_id == session[:user_id] %>yourObject<% end %>">
-            <%= session[:user_id] %>
           </div>
           <% if session[:showCopies] %><center><p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p></center><br><br><% end %>
       </a>
