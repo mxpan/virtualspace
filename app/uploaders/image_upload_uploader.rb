@@ -13,9 +13,8 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     #"images"
-    "uploads"
   end
 
   process :resize_to_fill => [300, 300]
@@ -55,14 +54,14 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "poopnuggets.jpg" if original_filename.present?
-    #"#{secure_token}.#{file.extension}" if original_filename.present?
-  end
+  # def filename
+  #   "poopnuggets.jpg" if original_filename.present?
+  #   #"#{secure_token}.#{file.extension}" if original_filename.present?
+  # end
 
-  protected
-  def secure_token
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  end
+  # protected
+  # def secure_token
+  #   var = :"@#{mounted_as}_secure_token"
+  #   model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  # end
 end
