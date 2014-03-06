@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'mini_magick'
 gem 'fog', '~> 1.20.0'
+gem 'unf'
 
 group :development do
   gem 'rails_layout'
