@@ -23,7 +23,7 @@
 	<br/>
 	<%= text_area_tag(:description, nil, :placeholder => "Description", :class => "form-control", size: "24x6") %>
 	<br/>
-	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(@user.id), :id, :name, :prompt => "None") %>
+	Belongs to Room: <%= collection_select(:item, :room_id, Room.find_all_by_user_id(session[:user_id]), :id, :name, :prompt => "None") %>
 	<br/><br/>
 	<%= text_field_tag :tags, nil, :placeholder => "Tags (separate with commas)", :class => "form-control" %>
 	<br/>
