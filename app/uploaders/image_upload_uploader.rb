@@ -61,7 +61,7 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
       if model.class.exists?(:imageURL => original_filename)
         "#{secure_token}.#{file.extension}" if original_filename.present?
       else
-        original_filename
+        "#{original_filename}.#{file.extension}" if original_filename.present?
       end
   end
 
