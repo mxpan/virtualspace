@@ -11,7 +11,7 @@ class LoadData < ActiveRecord::Migration
   	#Create rooms
   	room = Room.new(:user_id => user.id, :name => "Living Room", :description => "modern multi-colored living room", :borrowedTimes => 5)
     room.imageURL = File.open("#{Rails.root}/public/images/loadImages/room01.jpg")
-  	room.save
+  	room.save!
 
     tag = Tag.new(:name => "color")
     tag.save
@@ -19,7 +19,7 @@ class LoadData < ActiveRecord::Migration
 
   	room = Room.new(:user_id => user.id, :name => "Second Living Room", :description => "nothing is better than gazing at the sea in the morning", :borrowedTimes => 4)
     room.imageURL = File.open("#{Rails.root}/public/images/loadImages/room02.jpg")
-  	room.save
+  	room.save!
 
     item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table", :imageURL => File.open("#{Rails.root}/public/images/loadImages/item01.jpg"), :borrowedTimes => 3)
     item.save
