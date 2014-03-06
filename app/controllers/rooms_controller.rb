@@ -95,10 +95,10 @@ class RoomsController < ApplicationController
       		redirect_to(:controller => :home, :action => :login)
 	    else
 			@room = Room.new
-			if !params[:imageURL]
-				flash[:room_error] = "No file chosen"
-				redirect_to :controller => "spaces", :action => "add"
-			elsif params[:name] == ""
+			# if !params[:imageURL]
+			# 	flash[:room_error] = "No file chosen"
+			# 	redirect_to :controller => "spaces", :action => "add"
+			if params[:name] == ""
 				flash[:room_error] = "You must enter a name"
 				redirect_to :controller => "spaces", :action => "add"
 			else
@@ -119,7 +119,11 @@ class RoomsController < ApplicationController
 		  		@room.user_id = session[:user_id]
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]
-		  		@room.imageURL = params[:imageURL]
+		  		if !params[:imageURL]
+		  			@room.imageURL = File.open("#{Rails.root}/public/images/NoImageUploaded.gif")
+		  		else
+		  			@room.imageURL = params[:imageURL]
+		  		end
 		  		@room.borrowedTimes = 0
 		  		@room.save
 		  		redirect_to :action => "index", :id => @room.id

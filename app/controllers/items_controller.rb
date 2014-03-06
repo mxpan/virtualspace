@@ -97,10 +97,10 @@ class ItemsController < ApplicationController
      	 redirect_to(:controller => :home, :action => :login)
    		else
 			@item = Item.new
-			if !params[:imageURL]
-				flash[:item_error] = "No file chosen"
-				redirect_to :controller => "spaces", :action => "add"
-			elsif params[:name] == ""
+			# if !params[:imageURL]
+			# 	flash[:item_error] = "No file chosen"
+			# 	redirect_to :controller => "spaces", :action => "add"
+			if params[:name] == ""
 				flash[:item_error] = "You must enter a name"
 				redirect_to :controller => "spaces", :action => "add"
 			else
@@ -122,7 +122,11 @@ class ItemsController < ApplicationController
 		  		@item.room_id = params[:item][:room_id]
 		  		@item.name = params[:name]
 		  		@item.description = params[:description]
-		  		@item.imageURL = params[:imageURL]
+		  		if !params[:imageURL]
+		  			@item.imageURL = File.open("#{Rails.root}/public/images/NoImageUploaded.gif")
+		  		else
+		  			@item.imageURL = params[:imageURL]
+		  		end
 		  		@item.borrowedTimes = 0
 		  		@item.save
 		  		redirect_to :action => "index", :id => @item.id
