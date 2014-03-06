@@ -1,6 +1,4 @@
 CarrierWave.configure do |config|
-  config.cache_dir = "#{Rails.root}/tmp/uploads" # To let CarrierWave work on heroku
-  config.fog_directory  = 'vsapp'
 
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
@@ -10,4 +8,8 @@ CarrierWave.configure do |config|
     :host                   => '', # optional, defaults to nil
     :endpoint               => '' # optional, defaults to nil
   }
+
+  config.cache_dir = "#{Rails.root}/tmp/uploads" # To let CarrierWave work on heroku
+  config.fog_directory = 'vsapp'
+  config.fog_host = 'https://s3-us-west-1.amazonaws.com/vsapp'
 end
