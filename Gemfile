@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'mini_magick'
+gem 'fog', '~> 1.0.0'
 
 group :development do
   gem 'rails_layout'
