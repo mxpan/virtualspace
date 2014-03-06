@@ -56,7 +56,9 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   
   def filename
-     "#{secure_token}.#{file.extension}" if original_filename.present?
+      if Rooms.exists?(:imageURL => original_filename)
+        "#{secure_token}.#{file.extension}" if original_filename.present?
+      end
   end
 
   protected
