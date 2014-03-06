@@ -120,7 +120,6 @@ class RoomsController < ApplicationController
 		  		@room.name = params[:name]
 		  		@room.description = params[:description]
 		  		@room.imageURL = params[:imageURL]
-		  		puts @room.imageURL
 		  		@room.borrowedTimes = 0
 		  		@room.save
 		  		redirect_to :action => "index", :id => @room.id
