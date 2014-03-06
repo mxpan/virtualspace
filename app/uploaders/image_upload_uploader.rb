@@ -6,6 +6,8 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  permissions 0777
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -58,6 +60,8 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
   def filename
       if model.class.exists?(:imageURL => original_filename)
         "#{secure_token}.#{file.extension}" if original_filename.present?
+      else
+        original_filename
       end
   end
 
