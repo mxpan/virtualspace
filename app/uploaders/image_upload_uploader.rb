@@ -14,7 +14,7 @@ class ImageUploadUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    "public/images"
+    "images"
     # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     #"images"
   end

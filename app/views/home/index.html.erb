@@ -4,7 +4,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-48620223-1', {'cookieDomain': 'none'});
+  ga('create', 'UA-48620223-1', 'virtualspace.herokuapp.com');
   ga('send', 'pageview');
 
  </script>
@@ -33,7 +33,7 @@
           <div class="thumbnailContainer">
             <img src="<%= i.imageURL %>" class="thumbnail img-responsive <% if i.user_id == session[:user_id] %>yourObject<% end %>">
           </div>
-          <% if session[:showCopies] %><center><p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p></center><br><br><% end %>
+          <center><p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p></center><br><br>
       </a>
   </div>
 
@@ -55,7 +55,7 @@
         <% end %>
         </a>
         </p>
-        <% if session[:showCopies] %><p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p><% end %>
+        <p class="redText"><b>Copied <%= i.borrowedTimes %> Time<% if i.borrowedTimes != 1 %>s<% end %></b></p>
       </center>
       </div>
       <div class="modal-footer">

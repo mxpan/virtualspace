@@ -13,8 +13,6 @@ class HomeController < ApplicationController
   def login
     if !session[:user_id].nil?
       redirect_to(:action => :index)
-    else
-      session[:showCopies] = false
     end
   end
 
@@ -52,15 +50,6 @@ class HomeController < ApplicationController
       session[:user_id] = @user.id
       redirect_to(:action => :index)
    end
-  end
-
-  def login2
-    if !session[:user_id].nil?
-      redirect_to(:action => :index)
-    else
-      session[:showCopies] = true
-      render(:action => :login)
-    end
   end
 
   def logout

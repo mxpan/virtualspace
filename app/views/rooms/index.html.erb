@@ -19,7 +19,7 @@ you
 <% end %>
 </a>
 </p>
-<% if session[:showCopies] %><p class="redText"><b>Copied <%= @room.borrowedTimes %> Time<% if @room.borrowedTimes != 1 %>s<% end %></b></p><% end %>
+<p class="redText"><b>Copied <%= @room.borrowedTimes %> Time<% if @room.borrowedTimes != 1 %>s<% end %></b></p>
 </center>
 
 <% if session[:user_id] ==  @room.user_id%>

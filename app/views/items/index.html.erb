@@ -20,7 +20,7 @@ you
 <% end %>
 </a>
 </p>
-<% if session[:showCopies] %><p class="redText"><b>Copied <%= @item.borrowedTimes %> Time<% if @item.borrowedTimes != 1 %>s<% end %></b></p><% end %>
+<p class="redText"><b>Copied <%= @item.borrowedTimes %> Time<% if @item.borrowedTimes != 1 %>s<% end %></b></p>
 </center>
 
 <% if session[:user_id] ==  @item.user_id%>
