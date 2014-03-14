@@ -21,7 +21,7 @@ class LoadData < ActiveRecord::Migration
     room.imageURL = File.open("#{Rails.root}/public/images/room02.jpg")
   	room.save
 
-    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table", :imageURL => File.open("#{Rails.root}/public/images/item01.jpg"), :borrowedTimes => 3)
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table.  Bought at iKea http://www.ikea.com/us/en/store/east_palo_alto/offers", :imageURL => File.open("#{Rails.root}/public/images/item01.jpg"), :borrowedTimes => 3)
     item.save
 
     tag = Tag.new(:name => "green")
@@ -48,7 +48,7 @@ class LoadData < ActiveRecord::Migration
     tag.save
     room.tags << tag
 
-    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "crib", :description => "new crib for my new crib", :imageURL => File.open("#{Rails.root}/public/images/item03.jpg"), :borrowedTimes => 3)
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "crib", :description => "new crib for my new crib - from Babies R Us http://www.babiesrus.com/shop/index.jsp?categoryId=2255957&camp=ppc:92620849&affcode=620849&searchdef=2195185&k_clickid=3ca79389-aff0-aac8-13e2-00006bb018a6&002=2195185&006=35425510710&007=Search&008=&009=e&012=babies%20r%20us&021=13286191445&025=c&026=", :imageURL => File.open("#{Rails.root}/public/images/item03.jpg"), :borrowedTimes => 3)
     item.save
 
     tag = Tag.new(:name => "crib")
