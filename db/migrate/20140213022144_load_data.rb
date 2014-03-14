@@ -21,7 +21,7 @@ class LoadData < ActiveRecord::Migration
     room.imageURL = File.open("#{Rails.root}/public/images/room02.jpg")
   	room.save
 
-    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table", :imageURL => File.open("#{Rails.root}/public/images/item01.jpg"), :borrowedTimes => 3)
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "French Table", :description => "UGLY French Table.  Bought at iKea http://www.ikea.com/", :imageURL => File.open("#{Rails.root}/public/images/item01.jpg"), :borrowedTimes => 3)
     item.save
 
     tag = Tag.new(:name => "green")
@@ -48,7 +48,7 @@ class LoadData < ActiveRecord::Migration
     tag.save
     room.tags << tag
 
-    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "crib", :description => "new crib for my new crib", :imageURL => File.open("#{Rails.root}/public/images/item03.jpg"), :borrowedTimes => 3)
+    item = Item.new(:user_id => user.id, :room_id => room.id, :name => "crib", :description => "new crib for my new crib - from Babies R Us http://www.babiesrus.com/", :imageURL => File.open("#{Rails.root}/public/images/item03.jpg"), :borrowedTimes => 3)
     item.save
 
     tag = Tag.new(:name => "crib")
